@@ -50,7 +50,7 @@ get_decennial(geography = "state", variables = "P1_001N", year = 2020)
 # --------------------------------------
 
 ```{r}
-md <- rio::import("../data/maryland_tracts.xls") %>% 
+md <- rio::import("./data/maryland_tracts.xls") %>% 
   as.data.frame()
 
 md <- md %>% 
@@ -64,7 +64,7 @@ md <- md %>%
 
 
 ```{r}
-mdzip <- rio::import("../data/ZIP_TRACT_122023.xlsx")
+mdzip <- rio::import("./data/ZIP_TRACT_122023.xlsx")
 
 
 
@@ -90,7 +90,7 @@ md_places_full <- md_places |>
      select(usps_zip_pref_city,  income_per_capita, census_response_rate2020, census_response_rate2010, nbanks_zip, pct_anymembershp_zip, zip, tot_pop, age_above65, median_age, white, black, asian, edu_highschool, edu_bachelor,edu_graduate, income_0to10k, income_10to50k, income_50to100k, income_100to200k, income_200k, income_median, income_per_capita, occupation_management, occupation_sales, occupation_naturalresource, occupation_production, res_ratio, bus_ratio, oth_ratio,tot_ratio,pct_anymembershp1,geoid1, tract, census) |> 
   rename(city = usps_zip_pref_city)
 
-write.csv(md_places_full, "smith_school_w_places_full_version_1_27-2025.csv")
+write.csv(md_places_full, "smith_school_w_places_full_version_8_17-2026.csv")
 
 ```
 
@@ -144,6 +144,10 @@ maryland_data <- bind_rows(places_data, tracts_data)
 
 #B19013 defined: https://www.socialexplorer.com/data/ACS2010_5yr/metadata/?ds=ACS10_5yr&var=B19013001
 
+md_named <- read.csv("./data/md_smith_data_12.16.csv") %>% 
+  rename(lat = INTPTLAT, long = INTPTLONG)
+
+
 md_named <- md_named %>% 
   mutate(GEOID = as.character(tract))
 
@@ -196,7 +200,7 @@ leafMap <- leaflet() %>%
     position = "topright"
   )
 
-saveWidget(leafMap, "../output/state_member_all_map_jan_28.html")
+saveWidget(leafMap, "./output/state_member_all_map_jan_28.html")
 leafMap
 ```
 
@@ -218,10 +222,6 @@ md_places1 <- md %>%
 
 #Map by county
 ```{r}
-md_named <- read.csv("../output/md_smith_data_12.16.csv") %>% 
-  rename(lat = INTPTLAT, long = INTPTLONG)
-
-
 library(sf)
 
 md_named <- st_as_sf(md_named, coords = c("long", "lat"), crs = 4326)
@@ -311,7 +311,7 @@ himember %>%
   column_spec(1, bold = T, border_right = T) %>%
   column_spec(2, border_right = T, width = "10em", background = "yellow") %>% 
   column_spec(3, border_right = T, width = "10em") %>% 
-  save_kable(file = "../DataOutput/himember.html", self_contained = T)
+  save_kable(file = "./output/himember.html", self_contained = T)
 
 ```
 ## Census Response + Income
@@ -358,7 +358,7 @@ smith %>%
 
 ```{r}
 library(ggmap)
-register_google(key = "AIzaSyDa9e_boRiEo-nfqfJ5xLZBx47KbwFV8SE" )
+register_google(key = "XXXX" )
 
 foot_summary <- foot %>% 
   mutate(fulladdress = paste(street_address, city, region, postal_code, sep = ", ")) |> 
