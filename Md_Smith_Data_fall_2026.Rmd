@@ -25,6 +25,8 @@ library(janitor)
 #install.packages("leaflet.extras")
 library(leaflet.extras)
 library(googlesheets4)
+#install.packages("tigris")
+library(tigris)
 
 ```
 
@@ -35,7 +37,7 @@ Census API key.
 #Restart R after this
 ```
 
-
+#test tidycensus
 ```{r}
 library(tidycensus)
 
@@ -49,6 +51,17 @@ get_decennial(geography = "state", variables = "P1_001N", year = 2020)
 # Maryland Data Import:  Smith School 
 # --------------------------------------
 
+
+```{r}
+# Load Maryland FIPS reference data
+md_fips <- tidycensus::fips_codes |> 
+  filter(state == "MD") |> 
+  mutate(cty = as.numeric(paste0(state_code, county_code))) |> 
+  select(cty, county)
+
+
+```
+
 ```{r}
 md <- rio::import("./data/maryland_tracts.xls") %>% 
   as.data.frame()
@@ -59,8 +72,92 @@ md <- md %>%
   mutate(county = as.numeric(strtrim(tract, 5))) %>% 
   mutate(geoid = as.numeric(strtrim(tract, 7))) %>% 
   mutate(geoid1 = as.character((geoid))) %>% 
-  mutate(zip1 = as.character((zip)))
+  mutate(zip1 = as.character((zip))) |> 
+  group_by(cty) |> 
+  left_join(md_fips, by = "cty") |> 
+  rename(county_fips = county.x, county = county.y) |> 
+  relocate(county, .after = tract) |> 
+  subset(select = -c(cty, zip1, geoid1)) |> 
+  relocate(tract, .after = geoid)
 ```
+
+
+# Naming Census Tracts
+```{r}
+# 1. Download Census Tracts with geometry 
+pg_tracts <- get_decennial(
+  geography = "tract",
+  state = "MD",
+  county = "033",
+  variables = "P1_001N",
+  year = 2020,
+  geometry = TRUE
+)
+
+# 2. Download Places (cities/towns) for Maryland
+md_places <- places(state = "MD", year = 2020, cb = TRUE)
+
+# 3. Spatial join to find which city/town contains or intersects each tract
+tracts_with_places <- pg_tracts |> 
+  st_join(md_places, join = st_intersects) |> 
+ select(GEOID = GEOID.x, tract_name = NAME.x, city_town = NAMELSAD)
+
+# Focus on PG County
+pg <- md |> 
+  filter(county_fips =="24033") |> 
+  mutate(TRACT = as.character(tract)) |> 
+  inner_join(tracts_with_places, by = c("TRACT"="GEOID")) |> 
+  distinct(tract, .keep_all = TRUE) |> 
+  relocate(city_town, tract_name, .after = county)
+  
+write.csv(pg, "./output/pg_8_17-2026.csv")
+```
+
+
+#Simplify PG Data
+```{r}
+
+pg_places_brief <- pg |> 
+   select(city_town,  income_per_capita, census_response_rate2020, census_response_rate2010, nbanks_zip, pct_anymembershp_zip, zip, tot_pop, age_above65, median_age, white, black, asian, geoid, tract,tract_name) 
+
+
+write.csv(pg_places_brief, "./output/pg_places_brief_8_17-2026.csv")
+```
+
+
+
+```{r}
+#PG Income
+summary(pg$income_per_capita)
+#    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#   16747   26510   32613   33535   40555   73520 
+```
+
+
+```{r}
+#PCT Membership in any group
+summary(pg$pct_anymembershp_zip)
+ #   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.     NAs 
+ # 0.3124  0.4802  0.5037  0.5087  0.5305  0.6523       8 
+```
+
+
+#Tracts with below 1st quartile per capita income and 3rd quartile higher participation
+```{r}
+
+low_and_active <- pg |> 
+  filter(income_per_capita < 26510 | pct_anymembershp_zip >  0.5305) |> 
+  arrange(desc(pct_anymembershp_zip))
+
+write_csv(low_and_active, "./output/pg_co_low_income_active.csv")
+
+```
+
+
+#stopped aug 17
+
+
+
 
 
 ```{r}
