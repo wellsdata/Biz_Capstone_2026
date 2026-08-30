@@ -85,12 +85,21 @@ md <- md %>%
 # Naming Census Tracts
 ```{r}
 # 1. Download Census Tracts with geometry 
-pg_tracts <- get_decennial(
+pg_tracts_dec <- get_decennial(
   geography = "tract",
   state = "MD",
   county = "033",
   variables = "P1_001N",
   year = 2020,
+  geometry = TRUE
+)
+
+pg_tracts <- get_acs(
+  geography = "tract",
+  state = "MD",
+  county = "033",
+  variables = "B01003_001",
+  year = 2024,
   geometry = TRUE
 )
 
@@ -110,7 +119,7 @@ pg <- md |>
   distinct(tract, .keep_all = TRUE) |> 
   relocate(city_town, tract_name, .after = county)
   
-write.csv(pg, "./output/pg_8_17-2026.csv")
+#write.csv(pg, "./output/pg_8_17-2026.csv")
 ```
 
 
@@ -142,16 +151,118 @@ summary(pg$pct_anymembershp_zip)
 ```
 
 
-#Tracts with below 1st quartile per capita income and 3rd quartile higher participation
+#Tracts with below median per capita income and higher than median participation
 ```{r}
 
 low_and_active <- pg |> 
-  filter(income_per_capita < 26510 | pct_anymembershp_zip >  0.5305) |> 
+  filter(income_per_capita < 32613 & pct_anymembershp_zip >  0.5037) |> 
   arrange(desc(pct_anymembershp_zip))
 
 write_csv(low_and_active, "./output/pg_co_low_income_active.csv")
 
 ```
+
+
+
+
+
+```{r}
+low_and_active <- low_and_active %>%
+  sf::st_as_sf() %>%
+  sf::st_transform(4326) # 4326 is EPSG code for WGS84 long/lat
+
+
+# low_and_active <- low_and_active %>%
+#    sf::st_transform('+proj=longlat +datum=WGS84')
+
+
+pal <- colorNumeric(
+  palette = "inferno",
+  domain = low_and_active$pct_anymembershp_zip
+)
+
+#https://leaflet-extras.github.io/leaflet-providers/preview/
+leafMap <- leaflet() %>%
+  addProviderTiles(providers$Esri.WorldStreetMap) %>%
+  addPolygons(data = low_and_active,
+              color = ~pal(low_and_active$pct_anymembershp_zip),
+              weight = 2.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.5,
+  label = paste("Pct membership in civic groups is:",(low_and_active$pct_anymembershp_zip), "Income is",(low_and_active$income_per_capita), "in", (low_and_active$NAME.y), "zip code", (low_and_active$zip))) %>%
+ addControl(
+    html = '<div id="legend" style="background-color: white; padding: 10px; border-radius: 5px; border: 1px solid #ccc; text-align: center;">
+              <p><strong>Pct Membership 2020</strong></p>
+              <div style="background-color: gray; height: 20px; width: 30px; display: inline-block;"></div> 0: NA
+              <br>
+              <div style="background-color: black; height: 20px; width: 30px; display: inline-block;"></div> 30-39%
+              <br>
+              <div style="background-color: #e75480; height: 20px; width: 30px; display: inline-block;"></div> 40-45%
+              <br>
+              <div style="background-color: #fa8072; height: 20px; width: 30px; display: inline-block;"></div> 46-50%
+              <br>
+              <div style="background-color: #ffffbf; height: 20px; width: 30px; display: inline-block;"></div> 51-60%
+           </div>',
+    position = "bottomright"
+  ) %>% 
+  addControl(
+    html = "<div style='background-color: white; padding: 5px; border-radius: 3px;'><h3>High Civic Membership & Below Median Income in PG County</h3></div>",
+    position = "topright"
+  )
+
+saveWidget(leafMap, "./output/low_and_actice.html")
+leafMap
+```
+
+
+#Active in all tracts in PG County
+
+```{r}
+pg1 <- pg %>%
+  sf::st_as_sf() %>%
+  sf::st_transform(4326) |> # 4326 is EPSG code for WGS84 long/lat 
+  mutate(pct_anymembershp_zip = round(pct_anymembershp_zip,2)*100,
+         income_per_capita = round(income_per_capita,0))
+
+
+pal <- colorNumeric(
+  palette = "inferno",
+  domain = pg1$pct_anymembershp_zip
+)
+
+#https://leaflet-extras.github.io/leaflet-providers/preview/
+leafMap <- leaflet() %>%
+  addProviderTiles(providers$Esri.WorldStreetMap) %>%
+  addPolygons(data = pg1,
+              color = ~pal(pg1$pct_anymembershp_zip),
+              weight = 2.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.5,
+  label = paste("Pct membership in civic groups is:",(pg1$pct_anymembershp_zip),"%, Income is $",(pg1$income_per_capita), "in", (pg1$NAME.y), "zip code", (pg1$zip))) %>%
+ addControl(
+    html = '<div id="legend" style="background-color: white; padding: 10px; border-radius: 5px; border: 1px solid #ccc; text-align: center;">
+              <p><strong>Pct Membership 2020</strong></p>
+              <div style="background-color: gray; height: 20px; width: 30px; display: inline-block;"></div> 0: NA
+              <br>
+              <div style="background-color: black; height: 20px; width: 30px; display: inline-block;"></div> 30-39%
+              <br>
+              <div style="background-color: #e75480; height: 20px; width: 30px; display: inline-block;"></div> 40-45%
+              <br>
+              <div style="background-color: #fa8072; height: 20px; width: 30px; display: inline-block;"></div> 46-50%
+              <br>
+              <div style="background-color: #ffffbf; height: 20px; width: 30px; display: inline-block;"></div> 51-60%
+           </div>',
+    position = "bottomright"
+  ) %>% 
+  addControl(
+    html = "<div style='background-color: white; padding: 5px; border-radius: 3px;'><h3>Pct Membership PG County</h3></div>",
+    position = "topright"
+  )
+
+saveWidget(leafMap, "./output/low_and_actice.html")
+leafMap
+```
+
 
 
 #stopped aug 17
