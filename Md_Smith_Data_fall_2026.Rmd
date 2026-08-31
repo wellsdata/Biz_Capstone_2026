@@ -124,8 +124,9 @@ pg <- md |>
   relocate(city_town, tract_name, .after = county)
 
 
-
-write_csv(pg, "./output/pg_8_17-2026.csv")
+pg |> 
+  st_drop_geometry() |> 
+  write_csv("./output/pg_8_31_2026.csv")
 ```
 
 
