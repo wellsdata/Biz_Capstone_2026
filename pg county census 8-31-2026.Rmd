@@ -14,7 +14,7 @@ library(janitor)
 
 
 ```{r}
-pg <- read_csv("https://raw.githubusercontent.com/wellsdata/Biz_Capstone_2026/refs/heads/main/output/pg_8_17-2026.csv?token=GHSAT0AAAAAAEHPHKGXLKTNAQMTHW4EF7LK2UVWP7Q")
+pg <- read_csv("https://raw.githubusercontent.com/wellsdata/Biz_Capstone_2026/refs/heads/main/output/pg_8_17-2026.csv?token=GHSAT0AAAAAAEHPHKGWECSHBK3M7P2SYBBC2UVWVUA")
 ```
 
 

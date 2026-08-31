@@ -125,7 +125,7 @@ pg <- md |>
 
 
 
-write.csv(pg, "./output/pg_8_17-2026.csv")
+write_csv(pg, "./output/pg_8_17-2026.csv")
 ```
 
 
