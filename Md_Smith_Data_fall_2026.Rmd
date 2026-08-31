@@ -22,7 +22,7 @@ library(leaflet)
 library(sf)
 library(formattable)
 library(janitor)
-#install.packages("leaflet.extras")
+install.packages("leaflet.extras")
 library(leaflet.extras)
 library(googlesheets4)
 #install.packages("tigris")
@@ -33,8 +33,12 @@ library(tigris)
 Census API key.
 
 ```{r message=FALSE}
-#census_api_key("XXX", install = TRUE, overwrite = TRUE)
-#Restart R after this
+# usethis::edit_r_environ()
+# census_api_key("xxx", install = TRUE, overwrite = TRUE)
+# #Restart R after this
+
+# Reload your environment so R detects the newly installed key
+# readRenviron("~/.Renviron")
 ```
 
 #test tidycensus
@@ -42,7 +46,7 @@ Census API key.
 library(tidycensus)
 
 # Test fetch
-get_decennial(geography = "state", variables = "P1_001N", year = 2020)
+a <- get_decennial(geography = "state", variables = "P1_001N", year = 2020)
 ```
 
 
@@ -115,11 +119,13 @@ tracts_with_places <- pg_tracts |>
 pg <- md |> 
   filter(county_fips =="24033") |> 
   mutate(TRACT = as.character(tract)) |> 
-  inner_join(tracts_with_places, by = c("TRACT"="GEOID")) |> 
+  left_join(tracts_with_places, by = c("TRACT"="GEOID")) |> 
   distinct(tract, .keep_all = TRUE) |> 
   relocate(city_town, tract_name, .after = county)
-  
-#write.csv(pg, "./output/pg_8_17-2026.csv")
+
+
+
+write.csv(pg, "./output/pg_8_17-2026.csv")
 ```
 
 
@@ -130,7 +136,7 @@ pg_places_brief <- pg |>
    select(city_town,  income_per_capita, census_response_rate2020, census_response_rate2010, nbanks_zip, pct_anymembershp_zip, zip, tot_pop, age_above65, median_age, white, black, asian, geoid, tract,tract_name) 
 
 
-write.csv(pg_places_brief, "./output/pg_places_brief_8_17-2026.csv")
+#write.csv(pg_places_brief, "./output/pg_places_brief_8_17-2026.csv")
 ```
 
 

@@ -1,0 +1,58 @@
+---
+title: "PG County Census Data"
+author: "Wells"
+date: "2026-08-31"
+output: html_document
+---
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+#install.packages("formattable")
+library(formattable)
+library(janitor)
+```
+
+
+```{r}
+pg <- read_csv("https://raw.githubusercontent.com/wellsdata/Biz_Capstone_2026/refs/heads/main/output/pg_8_17-2026.csv?token=GHSAT0AAAAAAEHPHKGXLKTNAQMTHW4EF7LK2UVWP7Q")
+```
+
+
+#Simplify PG Data
+```{r}
+
+pg_places_brief <- pg |> 
+   select(city_town,  income_per_capita, census_response_rate2020, census_response_rate2010, nbanks_zip, pct_anymembershp_zip, zip, tot_pop, age_above65, median_age, white, black, asian, geoid, tract,tract_name) 
+
+
+#write.csv(pg_places_brief, "./output/pg_places_brief_8_17-2026.csv")
+```
+
+
+
+```{r}
+#PG Income
+summary(pg$income_per_capita)
+#    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#   16747   26510   32613   33535   40555   73520 
+```
+
+
+```{r}
+#PCT Membership in any group
+summary(pg$pct_anymembershp_zip)
+ #   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.     NAs 
+ # 0.3124  0.4802  0.5037  0.5087  0.5305  0.6523       8 
+```
+
+
+#Tracts with below median per capita income and higher than median participation
+```{r}
+
+low_and_active <- pg |> 
+  filter(income_per_capita < 32613 & pct_anymembershp_zip >  0.5037) |> 
+  arrange(desc(pct_anymembershp_zip))
+
+write_csv(low_and_active, "./output/pg_co_low_income_active.csv")
+
+```
