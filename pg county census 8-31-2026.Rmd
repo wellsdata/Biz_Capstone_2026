@@ -14,7 +14,7 @@ library(janitor)
 
 
 ```{r}
-pg <- read_csv("https://raw.githubusercontent.com/wellsdata/Biz_Capstone_2026/refs/heads/main/output/pg_8_31_2026.csv?token=GHSAT0AAAAAAEHPHKGX4AORIU534FCH5FZE2UVW6HA")
+pg <- read_csv("https://raw.githubusercontent.com/wellsdata/Biz_Capstone_2026/refs/heads/main/output/pg_8_31_2026.csv?token=GHSAT0AAAAAAEFOQ3T6AJ2AJ4DD7AYHK4MQ2VAQAEA")
 ```
 
 
@@ -28,22 +28,77 @@ pg_places_brief <- pg |>
 #write.csv(pg_places_brief, "./output/pg_places_brief_8_17-2026.csv")
 ```
 
+#Household income
+```{r}
+#PG Income
+summary(pg$income_median)
+  #  Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  # 35313   58523   71963   79214   97970  152334 
+#correct. but the data was compiled in a wonky way so this is a median of the medians of the census tracts, which is incorrect and doesn't reflect the actual county median of $101,798.
+```
 
 
+#Per capita income
 ```{r}
 #PG Income
 summary(pg$income_per_capita)
 #    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 #   16747   26510   32613   33535   40555   73520 
+#Again, this is the median of the medians... misleading
 ```
 
-
-```{r}
 #PCT Membership in any group
+```{r}
+
 summary(pg$pct_anymembershp_zip)
  #   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.     NAs 
  # 0.3124  0.4802  0.5037  0.5087  0.5305  0.6523       8 
 ```
+
+#median census_response_rate2020
+```{r}
+
+summary(pg$census_response_rate2020)
+ #   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.     NAs 
+ # 0.4210  0.6242  0.7190  0.7070  0.7940  0.9000      18 
+```
+
+#Filter for both above-median census_response_rate2020 and Percent of membership in Civic Organization.
+
+```{r}
+# above <- pg |> 
+#   filter(census_response_rate2020 >= 0.7190 & pct_anymembershp_zip >=  0.5037) |> 
+#   arrange(desc(pct_anymembershp_zip))
+
+above <- pg |> 
+  filter(census_response_rate2020 > median(census_response_rate2020, na.rm = TRUE) & 
+         pct_anymembershp_zip > median(pct_anymembershp_zip, na.rm = TRUE)) |> 
+  arrange(desc(pct_anymembershp_zip))
+
+
+
+summary(above$census_response_rate2020)
+ #  Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ # 0.7210  0.7535  0.8010  0.8027  0.8500  0.9000 
+
+summary(above$pct_anymembershp_zip)
+ #   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ # 0.5058  0.5230  0.5475  0.5656  0.6007  0.6523
+```
+
+
+#top 5 
+```{r}
+above |> 
+  select(city_town, income_median, census_response_rate2010, pct_anymembershp_zip) |> 
+  # arrange(desc(income_median)) |> #sort by income you get a different list
+  head()
+
+```
+
+
+
+
 
 
 #Tracts with below median per capita income and higher than median participation
