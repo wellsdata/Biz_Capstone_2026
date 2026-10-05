@@ -6,7 +6,7 @@ output: html_document
 # title: "DOGE layoffs"
 # author: "Wells"
 # date: "2026-10-04"
-knitr::opts_chunk$set(echo = TRUE)
+# knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
@@ -17,6 +17,10 @@ knitr::opts_chunk$set(echo = TRUE)
 #install.packages("sf")
 #install.packages('DT')
 #install.packages("formattable")
+# install.packages("rio")
+# install.packages("janitor")
+# install.packages("googlesheets4")
+# install.packages("readxl")
 library(DT)
 library(tidyverse)
 library(rio)
@@ -58,7 +62,7 @@ county_jobs <- county_jobs |>
 date_order <- c("january_25", "august_25", "january_26", "august_26")
 
 subset <- county_jobs |> 
-  filter(series_title %in% c("Maryland","Prince George's County","Montgomery County","Charles County", "Howard County", "frederick County")) |> 
+  filter(series_title %in% c("Maryland","Prince George's County","Montgomery County","Charles County", "Howard County", "Frederick County")) |> 
   select(series_title, all_of(date_order)) |> 
   pivot_longer(
     cols = -series_title, 
@@ -101,7 +105,7 @@ fed_cuts <- read_csv("bls_federal_workforce_1q_2026.csv") |>
 ```{r}
 
 fed_subset <- fed_cuts |> 
-  filter(area_name %in% c("Prince George's County","Montgomery County","Charles County", "Howard County", "frederick County")) |> 
+  filter(area_name %in% c("Prince George's County","Montgomery County","Charles County", "Howard County", "Frederick County")) |> 
   mutate(
     one_year_employment_gain_loss_percent = abs(one_year_employment_gain_loss_percent)
   )
@@ -149,6 +153,73 @@ bankrupt |>
   slice_max(filed_2026, n=15)
 
 ```
+
+# Sphere
+
+```{r}
+
+sphere <- rio::import("https://docs.google.com/spreadsheets/d/1lLF1y17FYm_GckqCu8hljN2k90PL6Cl5WW0amJZ1870/edit?usp=sharing") |> 
+  clean_names() |> 
+  mutate(amount_millions = as.numeric(amount_millions))
+
+```
+
+#Incentive chart
+
+```{r}
+
+incentive <- sphere |> 
+  filter(!item %in% c("Total Project Cost", "CB-111-2026 bond ceiling", "State incentive package"))
+  
+```
+
+
+```{r}
+#from Gemini
+# Calculate percentages and label positions
+incentive_labeled <- incentive |> 
+  mutate(
+    proportion = amount_millions / sum(amount_millions),
+    percentage = proportion * 100,
+    label = paste0("$", amount_millions, "M\n(", round(percentage, 1), "%)"),
+    # Calculate midpoint for text placement in polar coordinates
+    cum_sum = cumsum(amount_millions),
+    midpoint = cum_sum - amount_millions / 2
+  )
+
+ggplot(incentive_labeled, aes(x = "", y = amount_millions, fill = item)) +
+  geom_col(width = 1, color = "white") +
+  coord_polar("y", start = 0) +
+  geom_text(aes(y = midpoint, label = label), size = 3.5, color = "black") +
+  theme_void() +
+  labs(
+    title = "Incentive Breakdown (in Millions)",
+    fill = "Item"
+  ) +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold"))
+
+```
+
+#Original pie chart
+```{r}
+  ggplot(incentive, aes(x = "", y = amount_millions, fill = item)) +
+  geom_col(width = 1, color = "white") +
+  coord_polar("y", start = 0) +
+  theme_void() +
+  labs(
+    title = "Incentive Breakdown (in Millions)",
+    fill = "Item"
+  ) +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold"))
+
+
+
+```
+
+
+
+
+
 
 
 #Notes ----- Next, a map of DODGE cuts
