@@ -1,0 +1,188 @@
+---
+title: "Sphere graphic"
+name: "Sol Garcia-Terrazas - Rob Wells"
+output: html_document
+date: "2026-10-21"
+---
+```{r}
+library(tidyverse)
+```
+
+#read data
+```{r}
+sphere <- read_csv("sphere_all_categories.csv", skip = 1)
+
+graphic_data <- sphere %>%
+  filter(include_combined_pie == TRUE) %>%
+  mutate(
+    category = case_when(
+      category == "County TIF financing" ~ "County TIF",
+      category == "County parking garage" ~ "Parking garage",
+      category == "State incentive package" ~ "State incentives",
+      category == "Peterson land discount" ~ "Land discount*",
+      TRUE ~ category
+    ),
+    label = paste0(category, "\n$", amount_millions, "M")
+  )
+```
+
+
+```{r}
+
+graphic2 <- sphere %>%
+  filter(include_combined_pie == TRUE) %>%
+  mutate(
+    category = case_when(
+      category == "County TIF financing" ~ "County TIF bonds",
+      category == "County parking garage" ~ "Parking garage",
+      category == "State incentive package" ~ "State incentives",
+      TRUE ~ category
+    ),
+    label = paste0(category, "\n$", amount_millions, "million")
+  ) |> 
+  filter(!category=="Peterson land discount")
+```
+
+#new pie chart
+
+```{r}
+ggplot(graphic2, aes(x = 2, y = amount_millions, fill = category)) +
+
+  geom_col(
+    width = 1,
+    color = "white",
+    linewidth = 2,
+    show.legend = FALSE # Hides the legend
+  ) +
+
+  coord_polar(theta = "y") +
+  
+  # Expanded outer limit to accommodate multi-line category labels
+  xlim(0.7, 3.5) + 
+
+  # Combine Category and Amount into a single outside label
+  geom_text(
+    aes(
+      x = 2.8, 
+      label = paste0(category, "\n$", amount_millions, " Mln.")
+    ),
+    position = position_stack(vjust = 0.5),
+    color = "grey20",
+    fontface = "bold",
+    size = 4,
+    lineheight = 0.9 # Controls spacing between category and amount lines
+  ) +
+
+  # Center summary text
+  annotate(
+    "text",
+    x = 0.7,
+    y = 0,
+    label = "$184 mln",
+    fontface = "bold",
+    size = 7
+  ) +
+
+  labs(
+    title = "Maryland, PG county Sphere incentives",
+    caption = "Source: Prince George’s County FY 2027 proposed operating budget. Graphic: CNS / Sol Garcia-Terrazas & Rob Wells"
+  ) +
+
+  scale_fill_brewer(palette = "Set2") +
+
+  theme_void() +
+
+  theme(
+    plot.title = element_text(
+      size = 20,
+      face = "bold",
+      hjust = 0.5
+    ),
+    plot.caption = element_text(
+      size = 8,
+      hjust = 0.5,
+      margin = margin(t = 15)
+    ),
+    plot.margin = margin(15, 15, 15, 15)
+  )
+
+ggsave(
+  "sphere_incentives_rsw.png",
+  width = 8,
+  height = 8,
+  dpi = 300,
+  bg = "white"
+)
+```
+
+
+
+# old pie chart
+```{r}
+
+ggplot(graphic2,
+       aes(x = 2, y = amount_millions, fill = category)) +
+
+  geom_col(
+    width = 1,
+    color = "white",
+    linewidth = 2
+  ) +
+
+  coord_polar(theta = "y") +
+  xlim(0.7, 2.5) +
+
+  # Just put the dollar amount inside each slice
+  geom_text(
+    aes(label = paste0("$", amount_millions, "M")),
+    position = position_stack(vjust = 0.5),
+    color = "white",
+    fontface = "bold",
+    size = 5
+  ) +
+
+  # Simple center
+  annotate(
+    "text",
+    x = 0.7,
+    y = 0,
+    label = "$184 mln",
+    fontface = "bold",
+    size = 7
+  ) +
+
+  labs(
+    title = "Maryland, PG county Sphere incentives",
+    fill = NULL,
+    caption = "Source: Prince George’s County FY 2027 proposed operating budget. Graphic: CNS / Sol Garcia-Terrazas & Rob Wells"
+  ) +
+
+  scale_fill_brewer(palette = "Set2") +
+
+  theme_void() +
+
+  theme(
+    plot.title = element_text(
+      size = 20,
+      face = "bold",
+      hjust = 0.5
+    ),
+    legend.position = "bottom",
+    legend.text = element_text(size = 12),
+    plot.caption = element_text(
+      size = 8,
+      hjust = 0.5,
+      margin = margin(t = 15)
+    ),
+    plot.margin = margin(15, 15, 15, 15)
+  )
+
+ggsave(
+  "sphere_incentives_simple.png",
+  width = 7,
+  height = 7,
+  dpi = 300,
+  bg = "white"
+)
+
+```
