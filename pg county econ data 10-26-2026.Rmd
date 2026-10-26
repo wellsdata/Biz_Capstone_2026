@@ -1,7 +1,7 @@
 ---
 title: "PG County Census Data"
 author: "Wells"
-date: "2026-08-31"
+date: "2026-10-26"
 output: html_document
 ---
 
@@ -13,6 +13,87 @@ library(janitor)
 ```
 
 
+#Bureau of Economic Research Local GDP data
+```{r}
+bea <- read_csv("./data/bea_md_gdp_county_2024_CAGDP91.csv", skip=3) |> 
+  clean_names()
+```
+
+
+# Examine description.
+Documentation
+
+```{r}
+bea_govt <- bea |> 
+  filter(line_code %in% c(1, 2, 83)) |> 
+  subset(select = -c(line_code)) |> 
+  pivot_wider(names_from = description, values_from = x2024) |> 
+  clean_names() |> 
+  rename(government = government_and_government_enterprises, total = all_industry_total) |> 
+  mutate(across(c(total, private_industries, government), as.numeric)) |> 
+  mutate(geo_name = str_remove_all(geo_name, ", MD"))
+
+```
+
+#Totals, percentages
+```{r}
+
+bea_govt <- bea_govt |> 
+  mutate(table_total = private_industries + government,
+         diff = total - table_total,
+         pct_gov = round(government/total*100))
+
+```
+
+
+# Plot the pct
+```{r}
+ggplot(bea_govt, aes(x = pct_gov, y = reorder(geo_name, pct_gov), fill = pct_gov)) +
+  geom_col(show.legend = FALSE) +
+  labs(
+    title = "Pct government in local Maryland counties",
+    subtitle = "2024 BEA data",
+    caption = "Graphic by Rob Wells, 10-26-2026",
+    y = "county",
+    x = "Pct govt of GDP"
+  )
+
+```
+
+Adding labels, thanks Gemimi
+```{r}
+ggplot(bea_govt, aes(x = pct_gov, y = reorder(geo_name, pct_gov), fill = geo_name == "Maryland")) +
+  geom_col(show.legend = FALSE) +
+  
+  # Set colors: gold/yellow for Maryland (TRUE), grey for everything else (FALSE)
+  scale_fill_manual(values = c("TRUE" = "#FFD700", "FALSE" = "grey75")) +
+  
+  # Add labels to the bars
+  geom_text(
+    aes(label = paste0(round(pct_gov, 1), "%")),
+    hjust = -0.2,
+    size = 3.5,
+    color = "grey20"
+  ) +
+  
+  # Expand x-axis slightly so outside labels aren't cut off
+  scale_x_continuous(
+    expand = expansion(mult = c(0, 0.15))
+  ) +
+  
+  labs(
+    title = "Pct government in local Maryland counties",
+    subtitle = "2024 BEA data",
+    caption = "Graphic by Rob Wells, 10-26-2026",
+    y = "county",
+    x = "Pct govt of GDP"
+  )
+```
+
+
+
+
+# Smith School Economic Data
 ```{r}
 pg <- read_csv("https://raw.githubusercontent.com/wellsdata/Biz_Capstone_2026/refs/heads/main/output/pg_8_31_2026.csv?token=GHSAT0AAAAAAEFOQ3T6AJ2AJ4DD7AYHK4MQ2VAQAEA")
 ```

@@ -1,0 +1,886 @@
+CAGDP9 Real GDP by county 1
+(thousands of chained 2017 dollars)
+County
+GeoFIPS,GeoName,LineCode,Description,2024
+24000,Maryland,1,All industry total,433105905
+24000,Maryland,2,"  Private industries",344893144
+24000,Maryland,3,"    Agriculture, forestry, fishing and hunting",1106969
+24000,Maryland,6,"    Mining, quarrying, and oil and gas extraction",256055
+24000,Maryland,10,"    Utilities",6210102
+24000,Maryland,11,"    Construction",21520331
+24000,Maryland,12,"    Manufacturing",23645999
+24000,Maryland,13,"      Durable goods manufacturing",10702331
+24000,Maryland,25,"      Nondurable goods manufacturing",12933356
+24000,Maryland,34,"    Wholesale trade",16111040
+24000,Maryland,35,"    Retail trade",24793749
+24000,Maryland,36,"    Transportation and warehousing",9425246
+24000,Maryland,45,"    Information",24609016
+24000,Maryland,50,"    Finance, insurance, real estate, rental, and leasing",80063009
+24000,Maryland,51,"      Finance and insurance",15992243
+24000,Maryland,56,"      Real estate and rental and leasing",64533424
+24000,Maryland,59,"    Professional and business services",74310785
+24000,Maryland,60,"      Professional, scientific, and technical services",54448492
+24000,Maryland,64,"      Management of companies and enterprises",5859632
+24000,Maryland,65,"      Administrative and support and waste management and remediation services",14154728
+24000,Maryland,68,"    Educational services, health care, and social assistance",41833864
+24000,Maryland,69,"      Educational services",6649530
+24000,Maryland,70,"      Health care and social assistance",35198982
+24000,Maryland,75,"    Arts, entertainment, recreation, accommodation, and food services",15941843
+24000,Maryland,76,"      Arts, entertainment, and recreation",4976030
+24000,Maryland,79,"      Accommodation and food services",11021549
+24000,Maryland,82,"    Other services (except government and government enterprises)",8441778
+24000,Maryland,83,Government and government enterprises,88207650
+24000,Maryland,,Addenda:,
+24000,Maryland,87,Natural resources and mining,1370240
+24000,Maryland,88,Trade,40738644
+24000,Maryland,89,Transportation and utilities,15603951
+24000,Maryland,90,Manufacturing and information,47523836
+24000,Maryland,91,Private goods-producing industries 2,46310761
+24000,Maryland,92,Private services-providing industries 3,298848258
+24001,"Allegany, MD",1,All industry total,2748469
+24001,"Allegany, MD",2,"  Private industries",2179336
+24001,"Allegany, MD",3,"    Agriculture, forestry, fishing and hunting",3690
+24001,"Allegany, MD",6,"    Mining, quarrying, and oil and gas extraction",22328
+24001,"Allegany, MD",10,"    Utilities",52382
+24001,"Allegany, MD",11,"    Construction",73086
+24001,"Allegany, MD",12,"    Manufacturing",167533
+24001,"Allegany, MD",13,"      Durable goods manufacturing",75767
+24001,"Allegany, MD",25,"      Nondurable goods manufacturing",92736
+24001,"Allegany, MD",34,"    Wholesale trade",85942
+24001,"Allegany, MD",35,"    Retail trade",334262
+24001,"Allegany, MD",36,"    Transportation and warehousing",(D)
+24001,"Allegany, MD",45,"    Information",76432
+24001,"Allegany, MD",50,"    Finance, insurance, real estate, rental, and leasing",(D)
+24001,"Allegany, MD",51,"      Finance and insurance",65152
+24001,"Allegany, MD",56,"      Real estate and rental and leasing",(D)
+24001,"Allegany, MD",59,"    Professional and business services",172407
+24001,"Allegany, MD",60,"      Professional, scientific, and technical services",74881
+24001,"Allegany, MD",64,"      Management of companies and enterprises",28394
+24001,"Allegany, MD",65,"      Administrative and support and waste management and remediation services",70486
+24001,"Allegany, MD",68,"    Educational services, health care, and social assistance",493815
+24001,"Allegany, MD",69,"      Educational services",19393
+24001,"Allegany, MD",70,"      Health care and social assistance",474383
+24001,"Allegany, MD",75,"    Arts, entertainment, recreation, accommodation, and food services",142352
+24001,"Allegany, MD",76,"      Arts, entertainment, and recreation",10793
+24001,"Allegany, MD",79,"      Accommodation and food services",131554
+24001,"Allegany, MD",82,"    Other services (except government and government enterprises)",57413
+24001,"Allegany, MD",83,Government and government enterprises,567447
+24001,"Allegany, MD",,Addenda:,
+24001,"Allegany, MD",87,Natural resources and mining,25904
+24001,"Allegany, MD",88,Trade,418963
+24001,"Allegany, MD",89,Transportation and utilities,(D)
+24001,"Allegany, MD",90,Manufacturing and information,237929
+24001,"Allegany, MD",91,Private goods-producing industries 2,267759
+24001,"Allegany, MD",92,Private services-providing industries 3,1915090
+24003,"Anne Arundel, MD",1,All industry total,55635123
+24003,"Anne Arundel, MD",2,"  Private industries",38788953
+24003,"Anne Arundel, MD",3,"    Agriculture, forestry, fishing and hunting",23009
+24003,"Anne Arundel, MD",6,"    Mining, quarrying, and oil and gas extraction",25627
+24003,"Anne Arundel, MD",10,"    Utilities",367818
+24003,"Anne Arundel, MD",11,"    Construction",2812309
+24003,"Anne Arundel, MD",12,"    Manufacturing",4016342
+24003,"Anne Arundel, MD",13,"      Durable goods manufacturing",3738604
+24003,"Anne Arundel, MD",25,"      Nondurable goods manufacturing",283336
+24003,"Anne Arundel, MD",34,"    Wholesale trade",2410764
+24003,"Anne Arundel, MD",35,"    Retail trade",2782064
+24003,"Anne Arundel, MD",36,"    Transportation and warehousing",2504939
+24003,"Anne Arundel, MD",45,"    Information",1186573
+24003,"Anne Arundel, MD",50,"    Finance, insurance, real estate, rental, and leasing",7615317
+24003,"Anne Arundel, MD",51,"      Finance and insurance",1083662
+24003,"Anne Arundel, MD",56,"      Real estate and rental and leasing",6565374
+24003,"Anne Arundel, MD",59,"    Professional and business services",8953796
+24003,"Anne Arundel, MD",60,"      Professional, scientific, and technical services",6838828
+24003,"Anne Arundel, MD",64,"      Management of companies and enterprises",387881
+24003,"Anne Arundel, MD",65,"      Administrative and support and waste management and remediation services",1749088
+24003,"Anne Arundel, MD",68,"    Educational services, health care, and social assistance",3678607
+24003,"Anne Arundel, MD",69,"      Educational services",237038
+24003,"Anne Arundel, MD",70,"      Health care and social assistance",3443522
+24003,"Anne Arundel, MD",75,"    Arts, entertainment, recreation, accommodation, and food services",1984147
+24003,"Anne Arundel, MD",76,"      Arts, entertainment, and recreation",522606
+24003,"Anne Arundel, MD",79,"      Accommodation and food services",1461539
+24003,"Anne Arundel, MD",82,"    Other services (except government and government enterprises)",900429
+24003,"Anne Arundel, MD",83,Government and government enterprises,16868838
+24003,"Anne Arundel, MD",,Addenda:,
+24003,"Anne Arundel, MD",87,Natural resources and mining,50577
+24003,"Anne Arundel, MD",88,Trade,5179081
+24003,"Anne Arundel, MD",89,Transportation and utilities,2860896
+24003,"Anne Arundel, MD",90,Manufacturing and information,5187890
+24003,"Anne Arundel, MD",91,Private goods-producing industries 2,6792342
+24003,"Anne Arundel, MD",92,Private services-providing industries 3,31988245
+24005,"Baltimore, MD",1,All industry total,57707206
+24005,"Baltimore, MD",2,"  Private industries",50545891
+24005,"Baltimore, MD",3,"    Agriculture, forestry, fishing and hunting",27000
+24005,"Baltimore, MD",6,"    Mining, quarrying, and oil and gas extraction",22508
+24005,"Baltimore, MD",10,"    Utilities",211755
+24005,"Baltimore, MD",11,"    Construction",3162237
+24005,"Baltimore, MD",12,"    Manufacturing",2977078
+24005,"Baltimore, MD",13,"      Durable goods manufacturing",1412276
+24005,"Baltimore, MD",25,"      Nondurable goods manufacturing",1567157
+24005,"Baltimore, MD",34,"    Wholesale trade",2070366
+24005,"Baltimore, MD",35,"    Retail trade",3955836
+24005,"Baltimore, MD",36,"    Transportation and warehousing",1303797
+24005,"Baltimore, MD",45,"    Information",4260360
+24005,"Baltimore, MD",50,"    Finance, insurance, real estate, rental, and leasing",14912942
+24005,"Baltimore, MD",51,"      Finance and insurance",4057164
+24005,"Baltimore, MD",56,"      Real estate and rental and leasing",10927700
+24005,"Baltimore, MD",59,"    Professional and business services",8521284
+24005,"Baltimore, MD",60,"      Professional, scientific, and technical services",5460460
+24005,"Baltimore, MD",64,"      Management of companies and enterprises",705309
+24005,"Baltimore, MD",65,"      Administrative and support and waste management and remediation services",2386027
+24005,"Baltimore, MD",68,"    Educational services, health care, and social assistance",5988408
+24005,"Baltimore, MD",69,"      Educational services",655723
+24005,"Baltimore, MD",70,"      Health care and social assistance",5333791
+24005,"Baltimore, MD",75,"    Arts, entertainment, recreation, accommodation, and food services",2443908
+24005,"Baltimore, MD",76,"      Arts, entertainment, and recreation",1350424
+24005,"Baltimore, MD",79,"      Accommodation and food services",1128205
+24005,"Baltimore, MD",82,"    Other services (except government and government enterprises)",1116766
+24005,"Baltimore, MD",83,Government and government enterprises,7167484
+24005,"Baltimore, MD",,Addenda:,
+24005,"Baltimore, MD",87,Natural resources and mining,49123
+24005,"Baltimore, MD",88,Trade,6020944
+24005,"Baltimore, MD",89,Transportation and utilities,1515750
+24005,"Baltimore, MD",90,Manufacturing and information,7050070
+24005,"Baltimore, MD",91,Private goods-producing industries 2,6198934
+24005,"Baltimore, MD",92,Private services-providing industries 3,44389810
+24009,"Calvert, MD",1,All industry total,4828234
+24009,"Calvert, MD",2,"  Private industries",4332496
+24009,"Calvert, MD",3,"    Agriculture, forestry, fishing and hunting",3145
+24009,"Calvert, MD",6,"    Mining, quarrying, and oil and gas extraction",0
+24009,"Calvert, MD",10,"    Utilities",2047636
+24009,"Calvert, MD",11,"    Construction",182955
+24009,"Calvert, MD",12,"    Manufacturing",67561
+24009,"Calvert, MD",13,"      Durable goods manufacturing",56096
+24009,"Calvert, MD",25,"      Nondurable goods manufacturing",11961
+24009,"Calvert, MD",34,"    Wholesale trade",40981
+24009,"Calvert, MD",35,"    Retail trade",238054
+24009,"Calvert, MD",36,"    Transportation and warehousing",31696
+24009,"Calvert, MD",45,"    Information",82466
+24009,"Calvert, MD",50,"    Finance, insurance, real estate, rental, and leasing",872198
+24009,"Calvert, MD",51,"      Finance and insurance",69306
+24009,"Calvert, MD",56,"      Real estate and rental and leasing",805271
+24009,"Calvert, MD",59,"    Professional and business services",273967
+24009,"Calvert, MD",60,"      Professional, scientific, and technical services",177795
+24009,"Calvert, MD",64,"      Management of companies and enterprises",(D)
+24009,"Calvert, MD",65,"      Administrative and support and waste management and remediation services",(D)
+24009,"Calvert, MD",68,"    Educational services, health care, and social assistance",294210
+24009,"Calvert, MD",69,"      Educational services",13884
+24009,"Calvert, MD",70,"      Health care and social assistance",280279
+24009,"Calvert, MD",75,"    Arts, entertainment, recreation, accommodation, and food services",138885
+24009,"Calvert, MD",76,"      Arts, entertainment, and recreation",26840
+24009,"Calvert, MD",79,"      Accommodation and food services",111861
+24009,"Calvert, MD",82,"    Other services (except government and government enterprises)",85125
+24009,"Calvert, MD",83,Government and government enterprises,496513
+24009,"Calvert, MD",,Addenda:,
+24009,"Calvert, MD",87,Natural resources and mining,3145
+24009,"Calvert, MD",88,Trade,275288
+24009,"Calvert, MD",89,Transportation and utilities,2079227
+24009,"Calvert, MD",90,Manufacturing and information,138992
+24009,"Calvert, MD",91,Private goods-producing industries 2,253874
+24009,"Calvert, MD",92,Private services-providing industries 3,4089227
+24011,"Caroline, MD",1,All industry total,1233365
+24011,"Caroline, MD",2,"  Private industries",1084755
+24011,"Caroline, MD",3,"    Agriculture, forestry, fishing and hunting",147423
+24011,"Caroline, MD",6,"    Mining, quarrying, and oil and gas extraction",8967
+24011,"Caroline, MD",10,"    Utilities",13434
+24011,"Caroline, MD",11,"    Construction",108098
+24011,"Caroline, MD",12,"    Manufacturing",90913
+24011,"Caroline, MD",13,"      Durable goods manufacturing",24425
+24011,"Caroline, MD",25,"      Nondurable goods manufacturing",67589
+24011,"Caroline, MD",34,"    Wholesale trade",(D)
+24011,"Caroline, MD",35,"    Retail trade",125083
+24011,"Caroline, MD",36,"    Transportation and warehousing",112242
+24011,"Caroline, MD",45,"    Information",(D)
+24011,"Caroline, MD",50,"    Finance, insurance, real estate, rental, and leasing",214153
+24011,"Caroline, MD",51,"      Finance and insurance",18370
+24011,"Caroline, MD",56,"      Real estate and rental and leasing",195967
+24011,"Caroline, MD",59,"    Professional and business services",46209
+24011,"Caroline, MD",60,"      Professional, scientific, and technical services",(D)
+24011,"Caroline, MD",64,"      Management of companies and enterprises",(D)
+24011,"Caroline, MD",65,"      Administrative and support and waste management and remediation services",(D)
+24011,"Caroline, MD",68,"    Educational services, health care, and social assistance",61838
+24011,"Caroline, MD",69,"      Educational services",(D)
+24011,"Caroline, MD",70,"      Health care and social assistance",(D)
+24011,"Caroline, MD",75,"    Arts, entertainment, recreation, accommodation, and food services",18148
+24011,"Caroline, MD",76,"      Arts, entertainment, and recreation",3396
+24011,"Caroline, MD",79,"      Accommodation and food services",14791
+24011,"Caroline, MD",82,"    Other services (except government and government enterprises)",35327
+24011,"Caroline, MD",83,Government and government enterprises,148633
+24011,"Caroline, MD",,Addenda:,
+24011,"Caroline, MD",87,Natural resources and mining,157338
+24011,"Caroline, MD",88,Trade,(D)
+24011,"Caroline, MD",89,Transportation and utilities,125372
+24011,"Caroline, MD",90,Manufacturing and information,(D)
+24011,"Caroline, MD",91,Private goods-producing industries 2,362518
+24011,"Caroline, MD",92,Private services-providing industries 3,722867
+24013,"Carroll, MD",1,All industry total,6804752
+24013,"Carroll, MD",2,"  Private industries",5958252
+24013,"Carroll, MD",3,"    Agriculture, forestry, fishing and hunting",24775
+24013,"Carroll, MD",6,"    Mining, quarrying, and oil and gas extraction",6941
+24013,"Carroll, MD",10,"    Utilities",15701
+24013,"Carroll, MD",11,"    Construction",543351
+24013,"Carroll, MD",12,"    Manufacturing",449149
+24013,"Carroll, MD",13,"      Durable goods manufacturing",310485
+24013,"Carroll, MD",25,"      Nondurable goods manufacturing",140933
+24013,"Carroll, MD",34,"    Wholesale trade",419123
+24013,"Carroll, MD",35,"    Retail trade",614746
+24013,"Carroll, MD",36,"    Transportation and warehousing",118882
+24013,"Carroll, MD",45,"    Information",173081
+24013,"Carroll, MD",50,"    Finance, insurance, real estate, rental, and leasing",1646280
+24013,"Carroll, MD",51,"      Finance and insurance",298042
+24013,"Carroll, MD",56,"      Real estate and rental and leasing",1351612
+24013,"Carroll, MD",59,"    Professional and business services",831299
+24013,"Carroll, MD",60,"      Professional, scientific, and technical services",526568
+24013,"Carroll, MD",64,"      Management of companies and enterprises",23047
+24013,"Carroll, MD",65,"      Administrative and support and waste management and remediation services",282842
+24013,"Carroll, MD",68,"    Educational services, health care, and social assistance",719410
+24013,"Carroll, MD",69,"      Educational services",62281
+24013,"Carroll, MD",70,"      Health care and social assistance",657129
+24013,"Carroll, MD",75,"    Arts, entertainment, recreation, accommodation, and food services",245213
+24013,"Carroll, MD",76,"      Arts, entertainment, and recreation",45373
+24013,"Carroll, MD",79,"      Accommodation and food services",200418
+24013,"Carroll, MD",82,"    Other services (except government and government enterprises)",203621
+24013,"Carroll, MD",83,Government and government enterprises,847590
+24013,"Carroll, MD",,Addenda:,
+24013,"Carroll, MD",87,Natural resources and mining,31164
+24013,"Carroll, MD",88,Trade,1031227
+24013,"Carroll, MD",89,Transportation and utilities,134523
+24013,"Carroll, MD",90,Manufacturing and information,608181
+24013,"Carroll, MD",91,Private goods-producing industries 2,1016964
+24013,"Carroll, MD",92,Private services-providing industries 3,4960823
+24015,"Cecil, MD",1,All industry total,5448557
+24015,"Cecil, MD",2,"  Private industries",4283796
+24015,"Cecil, MD",3,"    Agriculture, forestry, fishing and hunting",(D)
+24015,"Cecil, MD",6,"    Mining, quarrying, and oil and gas extraction",9279
+24015,"Cecil, MD",10,"    Utilities",416907
+24015,"Cecil, MD",11,"    Construction",(D)
+24015,"Cecil, MD",12,"    Manufacturing",1122262
+24015,"Cecil, MD",13,"      Durable goods manufacturing",687630
+24015,"Cecil, MD",25,"      Nondurable goods manufacturing",439885
+24015,"Cecil, MD",34,"    Wholesale trade",180620
+24015,"Cecil, MD",35,"    Retail trade",323486
+24015,"Cecil, MD",36,"    Transportation and warehousing",308817
+24015,"Cecil, MD",45,"    Information",87519
+24015,"Cecil, MD",50,"    Finance, insurance, real estate, rental, and leasing",603771
+24015,"Cecil, MD",51,"      Finance and insurance",51312
+24015,"Cecil, MD",56,"      Real estate and rental and leasing",552147
+24015,"Cecil, MD",59,"    Professional and business services",203998
+24015,"Cecil, MD",60,"      Professional, scientific, and technical services",83967
+24015,"Cecil, MD",64,"      Management of companies and enterprises",4155
+24015,"Cecil, MD",65,"      Administrative and support and waste management and remediation services",114983
+24015,"Cecil, MD",68,"    Educational services, health care, and social assistance",317452
+24015,"Cecil, MD",69,"      Educational services",32359
+24015,"Cecil, MD",70,"      Health care and social assistance",285175
+24015,"Cecil, MD",75,"    Arts, entertainment, recreation, accommodation, and food services",231486
+24015,"Cecil, MD",76,"      Arts, entertainment, and recreation",95363
+24015,"Cecil, MD",79,"      Accommodation and food services",137973
+24015,"Cecil, MD",82,"    Other services (except government and government enterprises)",96762
+24015,"Cecil, MD",83,Government and government enterprises,1173386
+24015,"Cecil, MD",,Addenda:,
+24015,"Cecil, MD",87,Natural resources and mining,(D)
+24015,"Cecil, MD",88,Trade,503170
+24015,"Cecil, MD",89,Transportation and utilities,728839
+24015,"Cecil, MD",90,Manufacturing and information,1205158
+24015,"Cecil, MD",91,Private goods-producing industries 2,1506109
+24015,"Cecil, MD",92,Private services-providing industries 3,2771665
+24017,"Charles, MD",1,All industry total,6682037
+24017,"Charles, MD",2,"  Private industries",4963842
+24017,"Charles, MD",3,"    Agriculture, forestry, fishing and hunting",1350
+24017,"Charles, MD",6,"    Mining, quarrying, and oil and gas extraction",2573
+24017,"Charles, MD",10,"    Utilities",526365
+24017,"Charles, MD",11,"    Construction",568155
+24017,"Charles, MD",12,"    Manufacturing",73031
+24017,"Charles, MD",13,"      Durable goods manufacturing",30927
+24017,"Charles, MD",25,"      Nondurable goods manufacturing",41476
+24017,"Charles, MD",34,"    Wholesale trade",(D)
+24017,"Charles, MD",35,"    Retail trade",627821
+24017,"Charles, MD",36,"    Transportation and warehousing",123194
+24017,"Charles, MD",45,"    Information",101747
+24017,"Charles, MD",50,"    Finance, insurance, real estate, rental, and leasing",(D)
+24017,"Charles, MD",51,"      Finance and insurance",107203
+24017,"Charles, MD",56,"      Real estate and rental and leasing",(D)
+24017,"Charles, MD",59,"    Professional and business services",455579
+24017,"Charles, MD",60,"      Professional, scientific, and technical services",313936
+24017,"Charles, MD",64,"      Management of companies and enterprises",19990
+24017,"Charles, MD",65,"      Administrative and support and waste management and remediation services",120477
+24017,"Charles, MD",68,"    Educational services, health care, and social assistance",410264
+24017,"Charles, MD",69,"      Educational services",20934
+24017,"Charles, MD",70,"      Health care and social assistance",389328
+24017,"Charles, MD",75,"    Arts, entertainment, recreation, accommodation, and food services",221552
+24017,"Charles, MD",76,"      Arts, entertainment, and recreation",23435
+24017,"Charles, MD",79,"      Accommodation and food services",198670
+24017,"Charles, MD",82,"    Other services (except government and government enterprises)",130518
+24017,"Charles, MD",83,Government and government enterprises,1724857
+24017,"Charles, MD",,Addenda:,
+24017,"Charles, MD",87,Natural resources and mining,4160
+24017,"Charles, MD",88,Trade,(D)
+24017,"Charles, MD",89,Transportation and utilities,646196
+24017,"Charles, MD",90,Manufacturing and information,166184
+24017,"Charles, MD",91,Private goods-producing industries 2,646638
+24017,"Charles, MD",92,Private services-providing industries 3,4309898
+24019,"Dorchester, MD",1,All industry total,1395003
+24019,"Dorchester, MD",2,"  Private industries",1159242
+24019,"Dorchester, MD",3,"    Agriculture, forestry, fishing and hunting",56930
+24019,"Dorchester, MD",6,"    Mining, quarrying, and oil and gas extraction",0
+24019,"Dorchester, MD",10,"    Utilities",10087
+24019,"Dorchester, MD",11,"    Construction",69283
+24019,"Dorchester, MD",12,"    Manufacturing",236714
+24019,"Dorchester, MD",13,"      Durable goods manufacturing",43427
+24019,"Dorchester, MD",25,"      Nondurable goods manufacturing",196206
+24019,"Dorchester, MD",34,"    Wholesale trade",47570
+24019,"Dorchester, MD",35,"    Retail trade",102755
+24019,"Dorchester, MD",36,"    Transportation and warehousing",38895
+24019,"Dorchester, MD",45,"    Information",(D)
+24019,"Dorchester, MD",50,"    Finance, insurance, real estate, rental, and leasing",289138
+24019,"Dorchester, MD",51,"      Finance and insurance",34770
+24019,"Dorchester, MD",56,"      Real estate and rental and leasing",254326
+24019,"Dorchester, MD",59,"    Professional and business services",75918
+24019,"Dorchester, MD",60,"      Professional, scientific, and technical services",(D)
+24019,"Dorchester, MD",64,"      Management of companies and enterprises",(D)
+24019,"Dorchester, MD",65,"      Administrative and support and waste management and remediation services",(D)
+24019,"Dorchester, MD",68,"    Educational services, health care, and social assistance",87380
+24019,"Dorchester, MD",69,"      Educational services",3465
+24019,"Dorchester, MD",70,"      Health care and social assistance",83926
+24019,"Dorchester, MD",75,"    Arts, entertainment, recreation, accommodation, and food services",76505
+24019,"Dorchester, MD",76,"      Arts, entertainment, and recreation",6584
+24019,"Dorchester, MD",79,"      Accommodation and food services",69878
+24019,"Dorchester, MD",82,"    Other services (except government and government enterprises)",(D)
+24019,"Dorchester, MD",83,Government and government enterprises,237052
+24019,"Dorchester, MD",,Addenda:,
+24019,"Dorchester, MD",87,Natural resources and mining,56947
+24019,"Dorchester, MD",88,Trade,149979
+24019,"Dorchester, MD",89,Transportation and utilities,49049
+24019,"Dorchester, MD",90,Manufacturing and information,(D)
+24019,"Dorchester, MD",91,Private goods-producing industries 2,362768
+24019,"Dorchester, MD",92,Private services-providing industries 3,794987
+24021,"Frederick, MD",1,All industry total,15943952
+24021,"Frederick, MD",2,"  Private industries",13268781
+24021,"Frederick, MD",3,"    Agriculture, forestry, fishing and hunting",59628
+24021,"Frederick, MD",6,"    Mining, quarrying, and oil and gas extraction",5522
+24021,"Frederick, MD",10,"    Utilities",36279
+24021,"Frederick, MD",11,"    Construction",1302885
+24021,"Frederick, MD",12,"    Manufacturing",974395
+24021,"Frederick, MD",13,"      Durable goods manufacturing",251374
+24021,"Frederick, MD",25,"      Nondurable goods manufacturing",725677
+24021,"Frederick, MD",34,"    Wholesale trade",511775
+24021,"Frederick, MD",35,"    Retail trade",1222333
+24021,"Frederick, MD",36,"    Transportation and warehousing",161594
+24021,"Frederick, MD",45,"    Information",1140303
+24021,"Frederick, MD",50,"    Finance, insurance, real estate, rental, and leasing",3414917
+24021,"Frederick, MD",51,"      Finance and insurance",760834
+24021,"Frederick, MD",56,"      Real estate and rental and leasing",2658491
+24021,"Frederick, MD",59,"    Professional and business services",2573379
+24021,"Frederick, MD",60,"      Professional, scientific, and technical services",2008263
+24021,"Frederick, MD",64,"      Management of companies and enterprises",69327
+24021,"Frederick, MD",65,"      Administrative and support and waste management and remediation services",498028
+24021,"Frederick, MD",68,"    Educational services, health care, and social assistance",1227053
+24021,"Frederick, MD",69,"      Educational services",152371
+24021,"Frederick, MD",70,"      Health care and social assistance",1075008
+24021,"Frederick, MD",75,"    Arts, entertainment, recreation, accommodation, and food services",528186
+24021,"Frederick, MD",76,"      Arts, entertainment, and recreation",109034
+24021,"Frederick, MD",79,"      Accommodation and food services",420183
+24021,"Frederick, MD",82,"    Other services (except government and government enterprises)",376575
+24021,"Frederick, MD",83,Government and government enterprises,2676729
+24021,"Frederick, MD",,Addenda:,
+24021,"Frederick, MD",87,Natural resources and mining,64881
+24021,"Frederick, MD",88,Trade,1727444
+24021,"Frederick, MD",89,Transportation and utilities,197653
+24021,"Frederick, MD",90,Manufacturing and information,2009048
+24021,"Frederick, MD",91,Private goods-producing industries 2,2341370
+24021,"Frederick, MD",92,Private services-providing industries 3,11017467
+24023,"Garrett, MD",1,All industry total,1365063
+24023,"Garrett, MD",2,"  Private industries",1235471
+24023,"Garrett, MD",3,"    Agriculture, forestry, fishing and hunting",50227
+24023,"Garrett, MD",6,"    Mining, quarrying, and oil and gas extraction",46025
+24023,"Garrett, MD",10,"    Utilities",77906
+24023,"Garrett, MD",11,"    Construction",110207
+24023,"Garrett, MD",12,"    Manufacturing",81189
+24023,"Garrett, MD",13,"      Durable goods manufacturing",62360
+24023,"Garrett, MD",25,"      Nondurable goods manufacturing",19893
+24023,"Garrett, MD",34,"    Wholesale trade",38375
+24023,"Garrett, MD",35,"    Retail trade",140459
+24023,"Garrett, MD",36,"    Transportation and warehousing",48018
+24023,"Garrett, MD",45,"    Information",54983
+24023,"Garrett, MD",50,"    Finance, insurance, real estate, rental, and leasing",245811
+24023,"Garrett, MD",51,"      Finance and insurance",20914
+24023,"Garrett, MD",56,"      Real estate and rental and leasing",224709
+24023,"Garrett, MD",59,"    Professional and business services",127539
+24023,"Garrett, MD",60,"      Professional, scientific, and technical services",(D)
+24023,"Garrett, MD",64,"      Management of companies and enterprises",(D)
+24023,"Garrett, MD",65,"      Administrative and support and waste management and remediation services",43211
+24023,"Garrett, MD",68,"    Educational services, health care, and social assistance",112154
+24023,"Garrett, MD",69,"      Educational services",4220
+24023,"Garrett, MD",70,"      Health care and social assistance",107937
+24023,"Garrett, MD",75,"    Arts, entertainment, recreation, accommodation, and food services",71536
+24023,"Garrett, MD",76,"      Arts, entertainment, and recreation",24832
+24023,"Garrett, MD",79,"      Accommodation and food services",46841
+24023,"Garrett, MD",82,"    Other services (except government and government enterprises)",44878
+24023,"Garrett, MD",83,Government and government enterprises,129455
+24023,"Garrett, MD",,Addenda:,
+24023,"Garrett, MD",87,Natural resources and mining,96897
+24023,"Garrett, MD",88,Trade,177713
+24023,"Garrett, MD",89,Transportation and utilities,125592
+24023,"Garrett, MD",90,Manufacturing and information,127769
+24023,"Garrett, MD",91,Private goods-producing industries 2,291344
+24023,"Garrett, MD",92,Private services-providing industries 3,948987
+24025,"Harford, MD",1,All industry total,13995030
+24025,"Harford, MD",2,"  Private industries",10161494
+24025,"Harford, MD",3,"    Agriculture, forestry, fishing and hunting",8559
+24025,"Harford, MD",6,"    Mining, quarrying, and oil and gas extraction",15259
+24025,"Harford, MD",10,"    Utilities",283501
+24025,"Harford, MD",11,"    Construction",742603
+24025,"Harford, MD",12,"    Manufacturing",803567
+24025,"Harford, MD",13,"      Durable goods manufacturing",304148
+24025,"Harford, MD",25,"      Nondurable goods manufacturing",498716
+24025,"Harford, MD",34,"    Wholesale trade",646727
+24025,"Harford, MD",35,"    Retail trade",1015444
+24025,"Harford, MD",36,"    Transportation and warehousing",324045
+24025,"Harford, MD",45,"    Information",388969
+24025,"Harford, MD",50,"    Finance, insurance, real estate, rental, and leasing",2344861
+24025,"Harford, MD",51,"      Finance and insurance",288103
+24025,"Harford, MD",56,"      Real estate and rental and leasing",2064017
+24025,"Harford, MD",59,"    Professional and business services",2031973
+24025,"Harford, MD",60,"      Professional, scientific, and technical services",1620981
+24025,"Harford, MD",64,"      Management of companies and enterprises",57229
+24025,"Harford, MD",65,"      Administrative and support and waste management and remediation services",355563
+24025,"Harford, MD",68,"    Educational services, health care, and social assistance",1011004
+24025,"Harford, MD",69,"      Educational services",69523
+24025,"Harford, MD",70,"      Health care and social assistance",941552
+24025,"Harford, MD",75,"    Arts, entertainment, recreation, accommodation, and food services",381807
+24025,"Harford, MD",76,"      Arts, entertainment, and recreation",84677
+24025,"Harford, MD",79,"      Accommodation and food services",297973
+24025,"Harford, MD",82,"    Other services (except government and government enterprises)",283653
+24025,"Harford, MD",83,Government and government enterprises,3832385
+24025,"Harford, MD",,Addenda:,
+24025,"Harford, MD",87,Natural resources and mining,23862
+24025,"Harford, MD",88,Trade,1658709
+24025,"Harford, MD",89,Transportation and utilities,607111
+24025,"Harford, MD",90,Manufacturing and information,1160881
+24025,"Harford, MD",91,Private goods-producing industries 2,1566612
+24025,"Harford, MD",92,Private services-providing industries 3,8607680
+24027,"Howard, MD",1,All industry total,30577345
+24027,"Howard, MD",2,"  Private industries",28296666
+24027,"Howard, MD",3,"    Agriculture, forestry, fishing and hunting",5063
+24027,"Howard, MD",6,"    Mining, quarrying, and oil and gas extraction",6506
+24027,"Howard, MD",10,"    Utilities",34806
+24027,"Howard, MD",11,"    Construction",1535325
+24027,"Howard, MD",12,"    Manufacturing",1146237
+24027,"Howard, MD",13,"      Durable goods manufacturing",631556
+24027,"Howard, MD",25,"      Nondurable goods manufacturing",512302
+24027,"Howard, MD",34,"    Wholesale trade",2995687
+24027,"Howard, MD",35,"    Retail trade",1616667
+24027,"Howard, MD",36,"    Transportation and warehousing",460784
+24027,"Howard, MD",45,"    Information",(D)
+24027,"Howard, MD",50,"    Finance, insurance, real estate, rental, and leasing",5065119
+24027,"Howard, MD",51,"      Finance and insurance",1050067
+24027,"Howard, MD",56,"      Real estate and rental and leasing",4022726
+24027,"Howard, MD",59,"    Professional and business services",10049320
+24027,"Howard, MD",60,"      Professional, scientific, and technical services",8274009
+24027,"Howard, MD",64,"      Management of companies and enterprises",573646
+24027,"Howard, MD",65,"      Administrative and support and waste management and remediation services",1221807
+24027,"Howard, MD",68,"    Educational services, health care, and social assistance",1921347
+24027,"Howard, MD",69,"      Educational services",231786
+24027,"Howard, MD",70,"      Health care and social assistance",1690437
+24027,"Howard, MD",75,"    Arts, entertainment, recreation, accommodation, and food services",733873
+24027,"Howard, MD",76,"      Arts, entertainment, and recreation",215356
+24027,"Howard, MD",79,"      Accommodation and food services",518416
+24027,"Howard, MD",82,"    Other services (except government and government enterprises)",(D)
+24027,"Howard, MD",83,Government and government enterprises,2277276
+24027,"Howard, MD",,Addenda:,
+24027,"Howard, MD",87,Natural resources and mining,11577
+24027,"Howard, MD",88,Trade,4598944
+24027,"Howard, MD",89,Transportation and utilities,494220
+24027,"Howard, MD",90,Manufacturing and information,(D)
+24027,"Howard, MD",91,Private goods-producing industries 2,2697571
+24027,"Howard, MD",92,Private services-providing industries 3,25648077
+24029,"Kent, MD",1,All industry total,948734
+24029,"Kent, MD",2,"  Private industries",855099
+24029,"Kent, MD",3,"    Agriculture, forestry, fishing and hunting",29994
+24029,"Kent, MD",6,"    Mining, quarrying, and oil and gas extraction",256
+24029,"Kent, MD",10,"    Utilities",3830
+24029,"Kent, MD",11,"    Construction",42212
+24029,"Kent, MD",12,"    Manufacturing",167499
+24029,"Kent, MD",13,"      Durable goods manufacturing",41274
+24029,"Kent, MD",25,"      Nondurable goods manufacturing",128615
+24029,"Kent, MD",34,"    Wholesale trade",34362
+24029,"Kent, MD",35,"    Retail trade",66675
+24029,"Kent, MD",36,"    Transportation and warehousing",(D)
+24029,"Kent, MD",45,"    Information",31964
+24029,"Kent, MD",50,"    Finance, insurance, real estate, rental, and leasing",(D)
+24029,"Kent, MD",51,"      Finance and insurance",31789
+24029,"Kent, MD",56,"      Real estate and rental and leasing",(D)
+24029,"Kent, MD",59,"    Professional and business services",90382
+24029,"Kent, MD",60,"      Professional, scientific, and technical services",(D)
+24029,"Kent, MD",64,"      Management of companies and enterprises",(D)
+24029,"Kent, MD",65,"      Administrative and support and waste management and remediation services",29582
+24029,"Kent, MD",68,"    Educational services, health care, and social assistance",114380
+24029,"Kent, MD",69,"      Educational services",53671
+24029,"Kent, MD",70,"      Health care and social assistance",60708
+24029,"Kent, MD",75,"    Arts, entertainment, recreation, accommodation, and food services",54068
+24029,"Kent, MD",76,"      Arts, entertainment, and recreation",26716
+24029,"Kent, MD",79,"      Accommodation and food services",27389
+24029,"Kent, MD",82,"    Other services (except government and government enterprises)",26741
+24029,"Kent, MD",83,Government and government enterprises,93905
+24029,"Kent, MD",,Addenda:,
+24029,"Kent, MD",87,Natural resources and mining,30286
+24029,"Kent, MD",88,Trade,100419
+24029,"Kent, MD",89,Transportation and utilities,(D)
+24029,"Kent, MD",90,Manufacturing and information,195705
+24029,"Kent, MD",91,Private goods-producing industries 2,233129
+24029,"Kent, MD",92,Private services-providing industries 3,626749
+24031,"Montgomery, MD",1,All industry total,94922164
+24031,"Montgomery, MD",2,"  Private industries",76551075
+24031,"Montgomery, MD",3,"    Agriculture, forestry, fishing and hunting",20335
+24031,"Montgomery, MD",6,"    Mining, quarrying, and oil and gas extraction",9613
+24031,"Montgomery, MD",10,"    Utilities",351541
+24031,"Montgomery, MD",11,"    Construction",3364704
+24031,"Montgomery, MD",12,"    Manufacturing",6631373
+24031,"Montgomery, MD",13,"      Durable goods manufacturing",1378490
+24031,"Montgomery, MD",25,"      Nondurable goods manufacturing",5235211
+24031,"Montgomery, MD",34,"    Wholesale trade",1892666
+24031,"Montgomery, MD",35,"    Retail trade",4472162
+24031,"Montgomery, MD",36,"    Transportation and warehousing",540882
+24031,"Montgomery, MD",45,"    Information",6863974
+24031,"Montgomery, MD",50,"    Finance, insurance, real estate, rental, and leasing",18662211
+24031,"Montgomery, MD",51,"      Finance and insurance",4144867
+24031,"Montgomery, MD",56,"      Real estate and rental and leasing",14692405
+24031,"Montgomery, MD",59,"    Professional and business services",21274294
+24031,"Montgomery, MD",60,"      Professional, scientific, and technical services",16433366
+24031,"Montgomery, MD",64,"      Management of companies and enterprises",1936500
+24031,"Montgomery, MD",65,"      Administrative and support and waste management and remediation services",2954722
+24031,"Montgomery, MD",68,"    Educational services, health care, and social assistance",8166117
+24031,"Montgomery, MD",69,"      Educational services",899542
+24031,"Montgomery, MD",70,"      Health care and social assistance",7270461
+24031,"Montgomery, MD",75,"    Arts, entertainment, recreation, accommodation, and food services",2866406
+24031,"Montgomery, MD",76,"      Arts, entertainment, and recreation",637442
+24031,"Montgomery, MD",79,"      Accommodation and food services",2224339
+24031,"Montgomery, MD",82,"    Other services (except government and government enterprises)",2194258
+24031,"Montgomery, MD",83,Government and government enterprises,18374092
+24031,"Montgomery, MD",,Addenda:,
+24031,"Montgomery, MD",87,Natural resources and mining,30284
+24031,"Montgomery, MD",88,Trade,6327951
+24031,"Montgomery, MD",89,Transportation and utilities,885885
+24031,"Montgomery, MD",90,Manufacturing and information,13524770
+24031,"Montgomery, MD",91,Private goods-producing industries 2,9848402
+24031,"Montgomery, MD",92,Private services-providing industries 3,66671331
+24033,"Prince George's, MD",1,All industry total,50887450
+24033,"Prince George's, MD",2,"  Private industries",34493759
+24033,"Prince George's, MD",3,"    Agriculture, forestry, fishing and hunting",4157
+24033,"Prince George's, MD",6,"    Mining, quarrying, and oil and gas extraction",14368
+24033,"Prince George's, MD",10,"    Utilities",937870
+24033,"Prince George's, MD",11,"    Construction",3816811
+24033,"Prince George's, MD",12,"    Manufacturing",796757
+24033,"Prince George's, MD",13,"      Durable goods manufacturing",383677
+24033,"Prince George's, MD",25,"      Nondurable goods manufacturing",415665
+24033,"Prince George's, MD",34,"    Wholesale trade",1750107
+24033,"Prince George's, MD",35,"    Retail trade",3289269
+24033,"Prince George's, MD",36,"    Transportation and warehousing",950663
+24033,"Prince George's, MD",45,"    Information",1643164
+24033,"Prince George's, MD",50,"    Finance, insurance, real estate, rental, and leasing",8987777
+24033,"Prince George's, MD",51,"      Finance and insurance",664129
+24033,"Prince George's, MD",56,"      Real estate and rental and leasing",8358455
+24033,"Prince George's, MD",59,"    Professional and business services",6457540
+24033,"Prince George's, MD",60,"      Professional, scientific, and technical services",4601058
+24033,"Prince George's, MD",64,"      Management of companies and enterprises",346675
+24033,"Prince George's, MD",65,"      Administrative and support and waste management and remediation services",1536863
+24033,"Prince George's, MD",68,"    Educational services, health care, and social assistance",3354797
+24033,"Prince George's, MD",69,"      Educational services",398401
+24033,"Prince George's, MD",70,"      Health care and social assistance",2959971
+24033,"Prince George's, MD",75,"    Arts, entertainment, recreation, accommodation, and food services",1917484
+24033,"Prince George's, MD",76,"      Arts, entertainment, and recreation",262478
+24033,"Prince George's, MD",79,"      Accommodation and food services",1654568
+24033,"Prince George's, MD",82,"    Other services (except government and government enterprises)",871448
+24033,"Prince George's, MD",83,Government and government enterprises,16389409
+24033,"Prince George's, MD",,Addenda:,
+24033,"Prince George's, MD",87,Natural resources and mining,18563
+24033,"Prince George's, MD",88,Trade,5016691
+24033,"Prince George's, MD",89,Transportation and utilities,1889845
+24033,"Prince George's, MD",90,Manufacturing and information,2373950
+24033,"Prince George's, MD",91,Private goods-producing industries 2,4641105
+24033,"Prince George's, MD",92,Private services-providing industries 3,29952243
+24035,"Queen Anne's, MD",1,All industry total,2157003
+24035,"Queen Anne's, MD",2,"  Private industries",1909105
+24035,"Queen Anne's, MD",3,"    Agriculture, forestry, fishing and hunting",54616
+24035,"Queen Anne's, MD",6,"    Mining, quarrying, and oil and gas extraction",1285
+24035,"Queen Anne's, MD",10,"    Utilities",35636
+24035,"Queen Anne's, MD",11,"    Construction",232865
+24035,"Queen Anne's, MD",12,"    Manufacturing",173489
+24035,"Queen Anne's, MD",13,"      Durable goods manufacturing",136173
+24035,"Queen Anne's, MD",25,"      Nondurable goods manufacturing",37255
+24035,"Queen Anne's, MD",34,"    Wholesale trade",243052
+24035,"Queen Anne's, MD",35,"    Retail trade",182691
+24035,"Queen Anne's, MD",36,"    Transportation and warehousing",(D)
+24035,"Queen Anne's, MD",45,"    Information",20579
+24035,"Queen Anne's, MD",50,"    Finance, insurance, real estate, rental, and leasing",(D)
+24035,"Queen Anne's, MD",51,"      Finance and insurance",57323
+24035,"Queen Anne's, MD",56,"      Real estate and rental and leasing",(D)
+24035,"Queen Anne's, MD",59,"    Professional and business services",223957
+24035,"Queen Anne's, MD",60,"      Professional, scientific, and technical services",136098
+24035,"Queen Anne's, MD",64,"      Management of companies and enterprises",2262
+24035,"Queen Anne's, MD",65,"      Administrative and support and waste management and remediation services",84526
+24035,"Queen Anne's, MD",68,"    Educational services, health care, and social assistance",102850
+24035,"Queen Anne's, MD",69,"      Educational services",12038
+24035,"Queen Anne's, MD",70,"      Health care and social assistance",90818
+24035,"Queen Anne's, MD",75,"    Arts, entertainment, recreation, accommodation, and food services",134845
+24035,"Queen Anne's, MD",76,"      Arts, entertainment, and recreation",23212
+24035,"Queen Anne's, MD",79,"      Accommodation and food services",111609
+24035,"Queen Anne's, MD",82,"    Other services (except government and government enterprises)",72498
+24035,"Queen Anne's, MD",83,Government and government enterprises,248601
+24035,"Queen Anne's, MD",,Addenda:,
+24035,"Queen Anne's, MD",87,Natural resources and mining,55924
+24035,"Queen Anne's, MD",88,Trade,423856
+24035,"Queen Anne's, MD",89,Transportation and utilities,(D)
+24035,"Queen Anne's, MD",90,Manufacturing and information,192453
+24035,"Queen Anne's, MD",91,Private goods-producing industries 2,462401
+24035,"Queen Anne's, MD",92,Private services-providing industries 3,1449249
+24037,"St. Mary's, MD",1,All industry total,8388208
+24037,"St. Mary's, MD",2,"  Private industries",4921105
+24037,"St. Mary's, MD",3,"    Agriculture, forestry, fishing and hunting",(D)
+24037,"St. Mary's, MD",6,"    Mining, quarrying, and oil and gas extraction",276
+24037,"St. Mary's, MD",10,"    Utilities",(D)
+24037,"St. Mary's, MD",11,"    Construction",269096
+24037,"St. Mary's, MD",12,"    Manufacturing",167767
+24037,"St. Mary's, MD",13,"      Durable goods manufacturing",153069
+24037,"St. Mary's, MD",25,"      Nondurable goods manufacturing",14776
+24037,"St. Mary's, MD",34,"    Wholesale trade",(D)
+24037,"St. Mary's, MD",35,"    Retail trade",380903
+24037,"St. Mary's, MD",36,"    Transportation and warehousing",119152
+24037,"St. Mary's, MD",45,"    Information",69248
+24037,"St. Mary's, MD",50,"    Finance, insurance, real estate, rental, and leasing",1037368
+24037,"St. Mary's, MD",51,"      Finance and insurance",90153
+24037,"St. Mary's, MD",56,"      Real estate and rental and leasing",946358
+24037,"St. Mary's, MD",59,"    Professional and business services",2253522
+24037,"St. Mary's, MD",60,"      Professional, scientific, and technical services",2012129
+24037,"St. Mary's, MD",64,"      Management of companies and enterprises",25428
+24037,"St. Mary's, MD",65,"      Administrative and support and waste management and remediation services",206578
+24037,"St. Mary's, MD",68,"    Educational services, health care, and social assistance",439548
+24037,"St. Mary's, MD",69,"      Educational services",31199
+24037,"St. Mary's, MD",70,"      Health care and social assistance",408757
+24037,"St. Mary's, MD",75,"    Arts, entertainment, recreation, accommodation, and food services",146809
+24037,"St. Mary's, MD",76,"      Arts, entertainment, and recreation",15095
+24037,"St. Mary's, MD",79,"      Accommodation and food services",131628
+24037,"St. Mary's, MD",82,"    Other services (except government and government enterprises)",102688
+24037,"St. Mary's, MD",83,Government and government enterprises,3477544
+24037,"St. Mary's, MD",,Addenda:,
+24037,"St. Mary's, MD",87,Natural resources and mining,(D)
+24037,"St. Mary's, MD",88,Trade,(D)
+24037,"St. Mary's, MD",89,Transportation and utilities,(D)
+24037,"St. Mary's, MD",90,Manufacturing and information,236731
+24037,"St. Mary's, MD",91,Private goods-producing industries 2,(D)
+24037,"St. Mary's, MD",92,Private services-providing industries 3,(D)
+24039,"Somerset, MD",1,All industry total,953912
+24039,"Somerset, MD",2,"  Private industries",668136
+24039,"Somerset, MD",3,"    Agriculture, forestry, fishing and hunting",(D)
+24039,"Somerset, MD",6,"    Mining, quarrying, and oil and gas extraction",0
+24039,"Somerset, MD",10,"    Utilities",(D)
+24039,"Somerset, MD",11,"    Construction",(D)
+24039,"Somerset, MD",12,"    Manufacturing",62879
+24039,"Somerset, MD",13,"      Durable goods manufacturing",37791
+24039,"Somerset, MD",25,"      Nondurable goods manufacturing",25252
+24039,"Somerset, MD",34,"    Wholesale trade",110668
+24039,"Somerset, MD",35,"    Retail trade",35517
+24039,"Somerset, MD",36,"    Transportation and warehousing",(D)
+24039,"Somerset, MD",45,"    Information",9245
+24039,"Somerset, MD",50,"    Finance, insurance, real estate, rental, and leasing",(D)
+24039,"Somerset, MD",51,"      Finance and insurance",17459
+24039,"Somerset, MD",56,"      Real estate and rental and leasing",(D)
+24039,"Somerset, MD",59,"    Professional and business services",32137
+24039,"Somerset, MD",60,"      Professional, scientific, and technical services",(D)
+24039,"Somerset, MD",64,"      Management of companies and enterprises",(D)
+24039,"Somerset, MD",65,"      Administrative and support and waste management and remediation services",(D)
+24039,"Somerset, MD",68,"    Educational services, health care, and social assistance",55343
+24039,"Somerset, MD",69,"      Educational services",(D)
+24039,"Somerset, MD",70,"      Health care and social assistance",(D)
+24039,"Somerset, MD",75,"    Arts, entertainment, recreation, accommodation, and food services",12183
+24039,"Somerset, MD",76,"      Arts, entertainment, and recreation",2212
+24039,"Somerset, MD",79,"      Accommodation and food services",9955
+24039,"Somerset, MD",82,"    Other services (except government and government enterprises)",17801
+24039,"Somerset, MD",83,Government and government enterprises,285983
+24039,"Somerset, MD",,Addenda:,
+24039,"Somerset, MD",87,Natural resources and mining,(D)
+24039,"Somerset, MD",88,Trade,145329
+24039,"Somerset, MD",89,Transportation and utilities,(D)
+24039,"Somerset, MD",90,Manufacturing and information,71564
+24039,"Somerset, MD",91,Private goods-producing industries 2,(D)
+24039,"Somerset, MD",92,Private services-providing industries 3,(D)
+24041,"Talbot, MD",1,All industry total,2138647
+24041,"Talbot, MD",2,"  Private industries",1934601
+24041,"Talbot, MD",3,"    Agriculture, forestry, fishing and hunting",25539
+24041,"Talbot, MD",6,"    Mining, quarrying, and oil and gas extraction",1489
+24041,"Talbot, MD",10,"    Utilities",5176
+24041,"Talbot, MD",11,"    Construction",154361
+24041,"Talbot, MD",12,"    Manufacturing",95869
+24041,"Talbot, MD",13,"      Durable goods manufacturing",42636
+24041,"Talbot, MD",25,"      Nondurable goods manufacturing",53198
+24041,"Talbot, MD",34,"    Wholesale trade",76207
+24041,"Talbot, MD",35,"    Retail trade",190839
+24041,"Talbot, MD",36,"    Transportation and warehousing",(D)
+24041,"Talbot, MD",45,"    Information",70057
+24041,"Talbot, MD",50,"    Finance, insurance, real estate, rental, and leasing",(D)
+24041,"Talbot, MD",51,"      Finance and insurance",73934
+24041,"Talbot, MD",56,"      Real estate and rental and leasing",(D)
+24041,"Talbot, MD",59,"    Professional and business services",317332
+24041,"Talbot, MD",60,"      Professional, scientific, and technical services",202906
+24041,"Talbot, MD",64,"      Management of companies and enterprises",17914
+24041,"Talbot, MD",65,"      Administrative and support and waste management and remediation services",97939
+24041,"Talbot, MD",68,"    Educational services, health care, and social assistance",341382
+24041,"Talbot, MD",69,"      Educational services",20731
+24041,"Talbot, MD",70,"      Health care and social assistance",320704
+24041,"Talbot, MD",75,"    Arts, entertainment, recreation, accommodation, and food services",162862
+24041,"Talbot, MD",76,"      Arts, entertainment, and recreation",41756
+24041,"Talbot, MD",79,"      Accommodation and food services",121538
+24041,"Talbot, MD",82,"    Other services (except government and government enterprises)",67927
+24041,"Talbot, MD",83,Government and government enterprises,203657
+24041,"Talbot, MD",,Addenda:,
+24041,"Talbot, MD",87,Natural resources and mining,26761
+24041,"Talbot, MD",88,Trade,266221
+24041,"Talbot, MD",89,Transportation and utilities,(D)
+24041,"Talbot, MD",90,Manufacturing and information,164554
+24041,"Talbot, MD",91,Private goods-producing industries 2,276497
+24041,"Talbot, MD",92,Private services-providing industries 3,1659908
+24043,"Washington, MD",1,All industry total,7597356
+24043,"Washington, MD",2,"  Private industries",6748212
+24043,"Washington, MD",3,"    Agriculture, forestry, fishing and hunting",77562
+24043,"Washington, MD",6,"    Mining, quarrying, and oil and gas extraction",2268
+24043,"Washington, MD",10,"    Utilities",38514
+24043,"Washington, MD",11,"    Construction",505941
+24043,"Washington, MD",12,"    Manufacturing",891120
+24043,"Washington, MD",13,"      Durable goods manufacturing",489115
+24043,"Washington, MD",25,"      Nondurable goods manufacturing",401180
+24043,"Washington, MD",34,"    Wholesale trade",442827
+24043,"Washington, MD",35,"    Retail trade",885473
+24043,"Washington, MD",36,"    Transportation and warehousing",361293
+24043,"Washington, MD",45,"    Information",295258
+24043,"Washington, MD",50,"    Finance, insurance, real estate, rental, and leasing",1318644
+24043,"Washington, MD",51,"      Finance and insurance",275607
+24043,"Washington, MD",56,"      Real estate and rental and leasing",1053819
+24043,"Washington, MD",59,"    Professional and business services",641007
+24043,"Washington, MD",60,"      Professional, scientific, and technical services",232401
+24043,"Washington, MD",64,"      Management of companies and enterprises",154107
+24043,"Washington, MD",65,"      Administrative and support and waste management and remediation services",261926
+24043,"Washington, MD",68,"    Educational services, health care, and social assistance",914602
+24043,"Washington, MD",69,"      Educational services",45317
+24043,"Washington, MD",70,"      Health care and social assistance",869409
+24043,"Washington, MD",75,"    Arts, entertainment, recreation, accommodation, and food services",258760
+24043,"Washington, MD",76,"      Arts, entertainment, and recreation",61927
+24043,"Washington, MD",79,"      Accommodation and food services",195923
+24043,"Washington, MD",82,"    Other services (except government and government enterprises)",172265
+24043,"Washington, MD",83,Government and government enterprises,848576
+24043,"Washington, MD",,Addenda:,
+24043,"Washington, MD",87,Natural resources and mining,79085
+24043,"Washington, MD",88,Trade,1321880
+24043,"Washington, MD",89,Transportation and utilities,399776
+24043,"Washington, MD",90,Manufacturing and information,1161446
+24043,"Washington, MD",91,Private goods-producing industries 2,1483659
+24043,"Washington, MD",92,Private services-providing industries 3,5270642
+24045,"Wicomico, MD",1,All industry total,5608755
+24045,"Wicomico, MD",2,"  Private industries",4938336
+24045,"Wicomico, MD",3,"    Agriculture, forestry, fishing and hunting",179173
+24045,"Wicomico, MD",6,"    Mining, quarrying, and oil and gas extraction",1092
+24045,"Wicomico, MD",10,"    Utilities",51795
+24045,"Wicomico, MD",11,"    Construction",253714
+24045,"Wicomico, MD",12,"    Manufacturing",763829
+24045,"Wicomico, MD",13,"      Durable goods manufacturing",104760
+24045,"Wicomico, MD",25,"      Nondurable goods manufacturing",658207
+24045,"Wicomico, MD",34,"    Wholesale trade",309593
+24045,"Wicomico, MD",35,"    Retail trade",566164
+24045,"Wicomico, MD",36,"    Transportation and warehousing",111458
+24045,"Wicomico, MD",45,"    Information",225097
+24045,"Wicomico, MD",50,"    Finance, insurance, real estate, rental, and leasing",798578
+24045,"Wicomico, MD",51,"      Finance and insurance",162553
+24045,"Wicomico, MD",56,"      Real estate and rental and leasing",637253
+24045,"Wicomico, MD",59,"    Professional and business services",561475
+24045,"Wicomico, MD",60,"      Professional, scientific, and technical services",179501
+24045,"Wicomico, MD",64,"      Management of companies and enterprises",215772
+24045,"Wicomico, MD",65,"      Administrative and support and waste management and remediation services",169479
+24045,"Wicomico, MD",68,"    Educational services, health care, and social assistance",843941
+24045,"Wicomico, MD",69,"      Educational services",14378
+24045,"Wicomico, MD",70,"      Health care and social assistance",829724
+24045,"Wicomico, MD",75,"    Arts, entertainment, recreation, accommodation, and food services",170196
+24045,"Wicomico, MD",76,"      Arts, entertainment, and recreation",18260
+24045,"Wicomico, MD",79,"      Accommodation and food services",152274
+24045,"Wicomico, MD",82,"    Other services (except government and government enterprises)",121200
+24045,"Wicomico, MD",83,Government and government enterprises,671392
+24045,"Wicomico, MD",,Addenda:,
+24045,"Wicomico, MD",87,Natural resources and mining,180388
+24045,"Wicomico, MD",88,Trade,871250
+24045,"Wicomico, MD",89,Transportation and utilities,162041
+24045,"Wicomico, MD",90,Manufacturing and information,986192
+24045,"Wicomico, MD",91,Private goods-producing industries 2,1207349
+24045,"Wicomico, MD",92,Private services-providing industries 3,3731046
+24047,"Worcester, MD",1,All industry total,3142528
+24047,"Worcester, MD",2,"  Private industries",2817145
+24047,"Worcester, MD",3,"    Agriculture, forestry, fishing and hunting",122022
+24047,"Worcester, MD",6,"    Mining, quarrying, and oil and gas extraction",48272
+24047,"Worcester, MD",10,"    Utilities",2881
+24047,"Worcester, MD",11,"    Construction",173341
+24047,"Worcester, MD",12,"    Manufacturing",108705
+24047,"Worcester, MD",13,"      Durable goods manufacturing",69336
+24047,"Worcester, MD",25,"      Nondurable goods manufacturing",39416
+24047,"Worcester, MD",34,"    Wholesale trade",50291
+24047,"Worcester, MD",35,"    Retail trade",284814
+24047,"Worcester, MD",36,"    Transportation and warehousing",(D)
+24047,"Worcester, MD",45,"    Information",51651
+24047,"Worcester, MD",50,"    Finance, insurance, real estate, rental, and leasing",(D)
+24047,"Worcester, MD",51,"      Finance and insurance",69759
+24047,"Worcester, MD",56,"      Real estate and rental and leasing",(D)
+24047,"Worcester, MD",59,"    Professional and business services",231920
+24047,"Worcester, MD",60,"      Professional, scientific, and technical services",133173
+24047,"Worcester, MD",64,"      Management of companies and enterprises",11777
+24047,"Worcester, MD",65,"      Administrative and support and waste management and remediation services",88388
+24047,"Worcester, MD",68,"    Educational services, health care, and social assistance",200995
+24047,"Worcester, MD",69,"      Educational services",12354
+24047,"Worcester, MD",70,"      Health care and social assistance",188617
+24047,"Worcester, MD",75,"    Arts, entertainment, recreation, accommodation, and food services",571081
+24047,"Worcester, MD",76,"      Arts, entertainment, and recreation",98120
+24047,"Worcester, MD",79,"      Accommodation and food services",472849
+24047,"Worcester, MD",82,"    Other services (except government and government enterprises)",70305
+24047,"Worcester, MD",83,Government and government enterprises,325984
+24047,"Worcester, MD",,Addenda:,
+24047,"Worcester, MD",87,Natural resources and mining,177541
+24047,"Worcester, MD",88,Trade,334619
+24047,"Worcester, MD",89,Transportation and utilities,(D)
+24047,"Worcester, MD",90,Manufacturing and information,157913
+24047,"Worcester, MD",91,Private goods-producing industries 2,463257
+24047,"Worcester, MD",92,Private services-providing industries 3,2353928
+24510,"Baltimore (Independent City), MD",1,All industry total,51900153
+24510,"Baltimore (Independent City), MD",2,"  Private industries",42753144
+24510,"Baltimore (Independent City), MD",3,"    Agriculture, forestry, fishing and hunting",853
+24510,"Baltimore (Independent City), MD",6,"    Mining, quarrying, and oil and gas extraction",2418
+24510,"Baltimore (Independent City), MD",10,"    Utilities",658306
+24510,"Baltimore (Independent City), MD",11,"    Construction",1160798
+24510,"Baltimore (Independent City), MD",12,"    Manufacturing",1707618
+24510,"Baltimore (Independent City), MD",13,"      Durable goods manufacturing",363974
+24510,"Baltimore (Independent City), MD",25,"      Nondurable goods manufacturing",1343386
+24510,"Baltimore (Independent City), MD",34,"    Wholesale trade",1551390
+24510,"Baltimore (Independent City), MD",35,"    Retail trade",1340232
+24510,"Baltimore (Independent City), MD",36,"    Transportation and warehousing",1609874
+24510,"Baltimore (Independent City), MD",45,"    Information",4965446
+24510,"Baltimore (Independent City), MD",50,"    Finance, insurance, real estate, rental, and leasing",8119001
+24510,"Baltimore (Independent City), MD",51,"      Finance and insurance",2560029
+24510,"Baltimore (Independent City), MD",56,"      Real estate and rental and leasing",5644262
+24510,"Baltimore (Independent City), MD",59,"    Professional and business services",7945040
+24510,"Baltimore (Independent City), MD",60,"      Professional, scientific, and technical services",5020209
+24510,"Baltimore (Independent City), MD",64,"      Management of companies and enterprises",1216896
+24510,"Baltimore (Independent City), MD",65,"      Administrative and support and waste management and remediation services",1741247
+24510,"Baltimore (Independent City), MD",68,"    Educational services, health care, and social assistance",10994880
+24510,"Baltimore (Independent City), MD",69,"      Educational services",3648394
+24510,"Baltimore (Independent City), MD",70,"      Health care and social assistance",7349307
+24510,"Baltimore (Independent City), MD",75,"    Arts, entertainment, recreation, accommodation, and food services",2438973
+24510,"Baltimore (Independent City), MD",76,"      Arts, entertainment, and recreation",1281945
+24510,"Baltimore (Independent City), MD",79,"      Accommodation and food services",1179846
+24510,"Baltimore (Independent City), MD",82,"    Other services (except government and government enterprises)",898419
+24510,"Baltimore (Independent City), MD",83,Government and government enterprises,9149805
+24510,"Baltimore (Independent City), MD",,Addenda:,
+24510,"Baltimore (Independent City), MD",87,Natural resources and mining,3292
+24510,"Baltimore (Independent City), MD",88,Trade,2866284
+24510,"Baltimore (Independent City), MD",89,Transportation and utilities,2265520
+24510,"Baltimore (Independent City), MD",90,Manufacturing and information,6449194
+24510,"Baltimore (Independent City), MD",91,Private goods-producing industries 2,2854111
+24510,"Baltimore (Independent City), MD",92,Private services-providing industries 3,39943374
+
+Legend/Footnotes
+1. Real GDP is in thousands of chained 2017 dollars. Industry detail is based on the 2017 North American Industry Classification System (NAICS).
+"2. The private goods-producing industries consist of agriculture, forestry, fishing, and hunting; mining, quarrying, and oil and gas extraction; construction; and manufacturing."
+"3. The private services-producing industries consist of utilities; wholesale trade; retail trade; transportation and warehousing, excluding Postal Service; information; finance and insurance; real estate, rental, and leasing; professional, scientific, and technical services; management of companies; administrative and support and waste management and remediation services; educational services; health care and social assistance; arts, entertainment, and recreation; accommodation and food services; and other services (except government and government enterprises)."
+(D) Not shown to avoid disclosure of confidential information; estimates are included in higher-level totals.
+"  Last updated: February 5, 2026-- new statistics for 2024; revised statistics for 2020-2023."
