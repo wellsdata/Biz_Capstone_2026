@@ -4,7 +4,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 # title: "DOGE layoffs"
-# author: "Wells"
+# author: "Bravo-Wells"
 # date: "2026-10-04"
 ```
 
@@ -59,7 +59,7 @@ county_jobs <- county_jobs |>
 #Chart Md, PG, Mont, Charles 2025 -aug 2026
 
 ```{r}
-date_order <- c("january_25", "august_25", "january_26", "august_26")
+date_order <- c("january_25", "august_26")
 
 subset <- county_jobs |> 
   filter(series_title %in% c("Maryland","Prince George's County","Montgomery County","Charles County", "Howard County", "frederick County")) |> 
@@ -72,7 +72,8 @@ subset <- county_jobs |>
   mutate(
     # Set explicitly ordered factor levels
     date = factor(date, levels = date_order)
-  )
+  ) |> 
+  mutate(series_title = str_remove_all(series_title, "County"))
 ```
 
 
@@ -91,6 +92,27 @@ ggplot(subset, aes(x = date, y = unemployment_rate, fill = series_title)) +
 
 ```
 
+# Modified graphic
+```{r}
+ggplot(subset, aes(x = series_title, y = unemployment_rate, fill = date)) +
+  geom_col(position = "dodge") +
+  geom_text(
+    aes(label = paste0(unemployment_rate,"%")), 
+    position = position_dodge(width = 0.9), # Matches the dodge width of geom_col
+    vjust = -0.5,                           # Pushes the text slightly above the bar
+    size = 3.5                              # Adjust text size as needed
+  ) +
+  labs(
+    title = "Unemployment Rate Comparison",
+    caption= "Graphic by Karyme Bravo and Rob Wells",
+    y = "Unemployment Rate (%)",
+    x = "",
+    fill = "Date"                           
+  ) +
+  theme_minimal() +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+
+```
 
 #Import BLS federal workforce data
 From https://data.bls.gov/maps/cew/MD?period=2026-Q1&industry=10&pos_color=blue&neg_color=orange&chartData=3&ownerType=1&distribution=1&Update=Update#tab1
