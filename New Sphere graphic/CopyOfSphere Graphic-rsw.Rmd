@@ -43,6 +43,22 @@ graphic2 <- sphere %>%
   filter(!category=="Peterson land discount")
 ```
 
+# Graphic #3 
+```{r}
+
+graphic3 <- sphere %>%
+  filter(include_combined_pie == TRUE) %>%
+  mutate(
+    category = case_when(
+      category == "County TIF financing" ~ "County TIF bonds",
+      category == "County parking garage" ~ "Parking garage",
+      category == "State incentive package" ~ "State incentives",
+      TRUE ~ category
+    ),
+    label = paste0(category, "\n$", amount_millions, "million")
+  ) 
+```
+
 #new pie chart
 
 ```{r}
