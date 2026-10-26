@@ -43,7 +43,7 @@ graphic2 <- sphere %>%
   filter(!category=="Peterson land discount")
 ```
 
-# Graphic #3 
+# Graphic 3
 ```{r}
 
 graphic3 <- sphere %>%
@@ -58,7 +58,6 @@ graphic3 <- sphere %>%
     label = paste0(category, "\n$", amount_millions, "million")
   ) 
 ```
-
 #new pie chart
 
 ```{r}
