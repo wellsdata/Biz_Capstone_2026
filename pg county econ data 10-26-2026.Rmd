@@ -103,19 +103,41 @@ bea_all <- bea2024_govt |>
 ```
 
 
-
-#Old code - Totals, percentages
 ```{r}
+bea_all <- bea_all |> 
+  mutate(table_total24 = government_24 + private_24,
+         table_total14 =  government_14 + private_14,
+         diff_24 = table_total24 - table_total14,
+         pct_gov_24 = round(government_24/total_24*100),
+         pct_gov_14 = round(government_14/total_14*100))
 
-# bea2024_govt <- bea2024_govt |> 
-#   mutate(table_total = private_industries + government,
-#          diff = total - table_total,
-#          pct_gov = round(government/total*100))
+
+
 
 ```
 
 
-# Plot the pct
+```{r}
+bea_all2 <- bea_all |> 
+  mutate(table_total24 = government_24 + private_24,
+         table_total14 =  government_14 + private_14,
+         diff_24 = table_total24 - table_total14,
+         pct_gov_24 = round(government_24/total_24*100),
+         pct_gov_14 = round(government_14/total_14*100)) |> 
+  select(geo_name, total_24, table_total24, diff_24,  pct_gov_24, total_14, table_total14, pct_gov_14)
+
+
+write_csv(bea_all2, "./data/bea_all_summary.csv")
+```
+
+
+
+
+
+
+
+Plot the pct
+#needs updating - rsw
 ```{r}
 ggplot(bea2024_govt, aes(x = pct_gov, y = reorder(geo_name, pct_gov), fill = pct_gov)) +
   geom_col(show.legend = FALSE) +
