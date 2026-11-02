@@ -1,9 +1,16 @@
 ---
-title: "PG County Census Data"
+title: "MD and PG County GDP and Census Data"
 author: "Wells"
-date: "2026-10-26"
+date: "2026-11-2"
 output: html_document
 ---
+
+
+This code updates earlier work analyzing GDP by county in Maryland.
+It is examining the Bureau of Economic Analysis Real GDP by County for 2024 and earlier years.
+https://apps.bea.gov/iTable/?reqid=70&step=30&isuri=1&year_end=-1&classification=naics&state=0&yearbegin=-1&unit_of_measure=percentchange&major_area=0&area=04000&year=-1&tableid=512&category=1512&area_type=0&statistic=1&selected_income_data=0#eyJhcHBpZCI6NzAsInN0ZXBzIjpbMSwyOSwyNSwzMSwyNiwyNywzMF0sImRhdGEiOltbInRhYmxlaWQiLCI1MDMiXSxbIk1ham9yX0FyZWEiLCI0Il0sWyJTdGF0ZSIsWyIyNDAwMCJdXSxbIkFyZWEiLFsiMjQwMDAiXV0sWyJTdGF0aXN0aWMiLFsiLTEiXV0sWyJVbml0X29mX21lYXN1cmUiLCJMZXZlbHMiXSxbIlllYXIiLFsiMjAyNCJdXSxbIlllYXJCZWdpbiIsIi0xIl0sWyJZZWFyX0VuZCIsIi0xIl1dfQ==
+
+
 
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -15,40 +22,102 @@ library(janitor)
 
 #Bureau of Economic Research Local GDP data
 ```{r}
-bea <- read_csv("./data/bea_md_gdp_county_2024_CAGDP91.csv", skip=3) |> 
+bea2024 <- read_csv("./data/bea_md_gdp_county_2024_CAGDP9.csv", skip=3) |> 
   clean_names()
+
+bea2019 <-read_csv("./data/bea_md_gdp_county_2019_CAGDP9.csv", skip=3) |> 
+  clean_names()
+
+bea2014 <- read_csv("./data/bea_md_gdp_county_2014_CAGDP9.csv", skip=3) |> 
+  clean_names()
+
 ```
 
 
 # Examine description.
 Documentation
+CAGDP9 Real GDP by county 1
+(thousands of chained 2017 dollars)
+
+Chained dollars are inflation adjusted since 2017 and that strips out the effects of inflation over time.
+
+Chained-dollar values. Chained-dollar values are calculated by multiplying the quantity index by the current-dollar value in the reference year (2017) and then dividing by 100. Percent changes calculated from real quantity indexes and chained-dollar levels are conceptually the same; any differences are due to rounding. **Chained-dollar values are not additive,** because the relative weights for a given period differ from those of the reference year. In tables that display chained-dollar values, a "residual" line shows the difference between the sum of detailed chained-dollar series and its corresponding aggregate.
+https://www.bea.gov/news/gdp-release-additional-information
+
+
+
+1. Real GDP is in thousands of chained 2017 dollars. Industry detail is based on the 2017 North American Industry Classification System (NAICS).
+2. The private goods-producing industries consist of agriculture, forestry, fishing, and hunting; mining, quarrying, and oil and gas extraction; construction; and manufacturing.
+3. The private services-producing industries consist of utilities; wholesale trade; retail trade; transportation and warehousing, excluding Postal Service; information; finance and insurance; real estate, rental, and leasing; professional, scientific, and technical services; management of companies; administrative and support and waste management and remediation services; educational services; health care and social assistance; arts, entertainment, and recreation; accommodation and food services; and other services (except government and government enterprises).
+Last updated: February 5, 2026-- new statistics for 2024; revised statistics for 2020-2023.
+Suggested citation: U.S. Bureau of Economic Analysis, "CAGDP9 Real GDP by county 1" (accessed Monday, November 2, 2026). 
+
+#Filter just for total, private, government industries
 
 ```{r}
-bea_govt <- bea |> 
+bea2024_govt <- bea2024 |> 
   filter(line_code %in% c(1, 2, 83)) |> 
   subset(select = -c(line_code)) |> 
   pivot_wider(names_from = description, values_from = x2024) |> 
   clean_names() |> 
-  rename(government = government_and_government_enterprises, total = all_industry_total) |> 
-  mutate(across(c(total, private_industries, government), as.numeric)) |> 
+  rename(government_24 = government_and_government_enterprises, total_24 = all_industry_total, private_24 = private_industries) |> 
+  mutate(across(c(total_24, private_24, government_24), as.numeric)) |> 
   mutate(geo_name = str_remove_all(geo_name, ", MD"))
 
 ```
 
-#Totals, percentages
+
+# Same but for 2019 and 2014
+Filter just for total, private, government industries
+
+```{r}
+bea2019_govt <- bea2019 |> 
+  filter(line_code %in% c(1, 2, 83)) |> 
+  subset(select = -c(line_code)) |> 
+  pivot_wider(names_from = description, values_from = x2019) |> 
+  clean_names() |> 
+  rename(government_19 = government_and_government_enterprises, total_19 = all_industry_total, private_19 = private_industries) |> 
+  mutate(across(c(total_19, private_19, government_19), as.numeric)) |> 
+  mutate(geo_name = str_remove_all(geo_name, ", MD"))
+
+
+bea2014_govt <- bea2014 |> 
+  filter(line_code %in% c(1, 2, 83)) |> 
+  subset(select = -c(line_code)) |> 
+  pivot_wider(names_from = description, values_from = x2014) |> 
+  clean_names() |> 
+  rename(government_14 = government_and_government_enterprises, total_14 = all_industry_total, private_14 = private_industries) |> 
+  mutate(across(c(total_14, private_14, government_14), as.numeric)) |> 
+  mutate(geo_name = str_remove_all(geo_name, ", MD"))
+```
+
+#Join all three
+
 ```{r}
 
-bea_govt <- bea_govt |> 
-  mutate(table_total = private_industries + government,
-         diff = total - table_total,
-         pct_gov = round(government/total*100))
+bea_all <- bea2024_govt |> 
+  inner_join(bea2019_govt, by=c("geo_name", "geo_fips")) |> 
+  inner_join(bea2014_govt, by=c("geo_name", "geo_fips"))  |> 
+  select(geo_name, total_24, total_19, total_14, government_24, government_19, government_14, private_24, private_19, private_14, geo_fips)
+             
+```
+
+
+
+#Old code - Totals, percentages
+```{r}
+
+# bea2024_govt <- bea2024_govt |> 
+#   mutate(table_total = private_industries + government,
+#          diff = total - table_total,
+#          pct_gov = round(government/total*100))
 
 ```
 
 
 # Plot the pct
 ```{r}
-ggplot(bea_govt, aes(x = pct_gov, y = reorder(geo_name, pct_gov), fill = pct_gov)) +
+ggplot(bea2024_govt, aes(x = pct_gov, y = reorder(geo_name, pct_gov), fill = pct_gov)) +
   geom_col(show.legend = FALSE) +
   labs(
     title = "Pct government in local Maryland counties",
@@ -62,7 +131,7 @@ ggplot(bea_govt, aes(x = pct_gov, y = reorder(geo_name, pct_gov), fill = pct_gov
 
 Adding labels, thanks Gemimi
 ```{r}
-ggplot(bea_govt, aes(x = pct_gov, y = reorder(geo_name, pct_gov), fill = geo_name == "Maryland")) +
+ggplot(bea2024_govt, aes(x = pct_gov, y = reorder(geo_name, pct_gov), fill = geo_name == "Maryland")) +
   geom_col(show.legend = FALSE) +
   
   # Set colors: gold/yellow for Maryland (TRUE), grey for everything else (FALSE)
