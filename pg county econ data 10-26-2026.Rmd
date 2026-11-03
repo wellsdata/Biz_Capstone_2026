@@ -11,6 +11,11 @@ It is examining the Bureau of Economic Analysis Real GDP by County for 2024 and 
 https://apps.bea.gov/iTable/?reqid=70&step=30&isuri=1&year_end=-1&classification=naics&state=0&yearbegin=-1&unit_of_measure=percentchange&major_area=0&area=04000&year=-1&tableid=512&category=1512&area_type=0&statistic=1&selected_income_data=0#eyJhcHBpZCI6NzAsInN0ZXBzIjpbMSwyOSwyNSwzMSwyNiwyNywzMF0sImRhdGEiOltbInRhYmxlaWQiLCI1MDMiXSxbIk1ham9yX0FyZWEiLCI0Il0sWyJTdGF0ZSIsWyIyNDAwMCJdXSxbIkFyZWEiLFsiMjQwMDAiXV0sWyJTdGF0aXN0aWMiLFsiLTEiXV0sWyJVbml0X29mX21lYXN1cmUiLCJMZXZlbHMiXSxbIlllYXIiLFsiMjAyNCJdXSxbIlllYXJCZWdpbiIsIi0xIl0sWyJZZWFyX0VuZCIsIi0xIl1dfQ==
 
 
+It also contains an analysis of the Prince George's County budget for FY2027
+https://www.princegeorgescountymd.gov/sites/default/files/media-document/Operating%20Budget%20-%20April%203%2C%202026.pdf
+
+
+
 
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -62,7 +67,62 @@ bea2024_govt <- bea2024 |>
   clean_names() |> 
   rename(government_24 = government_and_government_enterprises, total_24 = all_industry_total, private_24 = private_industries) |> 
   mutate(across(c(total_24, private_24, government_24), as.numeric)) |> 
-  mutate(geo_name = str_remove_all(geo_name, ", MD"))
+  mutate(geo_name = str_remove_all(geo_name, ", MD")) 
+ 
+
+```
+
+#Chart the 2024 GDP
+```{r}
+bea2024_govt |> 
+ mutate(pct_gov = round(government_24/total_24*100)) |> 
+ggplot(aes(x = pct_gov, y = reorder(geo_name, pct_gov), fill = pct_gov)) +
+  geom_col(show.legend = FALSE) +
+  labs(
+    title = "Pct government in local Maryland counties",
+    subtitle = "2024 BEA data",
+    caption = "Graphic by Rob Wells, 10-26-2026",
+    y = "county",
+    x = "Pct govt of GDP"
+  )
+
+```
+
+
+
+
+Adding labels, thanks Gemimi
+```{r}
+bea2024_govt |> 
+ mutate(pct_gov = round(government_24/total_24*100)) |> 
+ggplot(aes(x = pct_gov, y = reorder(geo_name, pct_gov), fill = geo_name == "Maryland")) +
+  geom_col(show.legend = FALSE) +
+  
+  # Set colors: gold/yellow for Maryland (TRUE), grey for everything else (FALSE)
+  scale_fill_manual(values = c("TRUE" = "#FFD700", "FALSE" = "grey75")) +
+  
+  # Add labels to the bars
+  geom_text(
+    aes(label = paste0(round(pct_gov, 1), "%")),
+    hjust = -0.2,
+    size = 3.5,
+    color = "grey20"
+  ) +
+  
+  # Expand x-axis slightly so outside labels aren't cut off
+  scale_x_continuous(
+    expand = expansion(mult = c(0, 0.15))
+  ) +
+  
+  labs(
+    title = "PG County has heavy reliance on goverment work",
+    subtitle = "Pct of government of total GDP, 2024 BEA data",
+    caption = "Graphic by Rob Wells, 10-26-2026",
+    y = "county",
+    x = "Pct govt of GDP"
+  )
+
+ggsave("./output/Pct_government_GDP_all_MD_counties.png", device = "png", width = 9, height = 6, dpi = 800)
 
 ```
 
@@ -102,6 +162,7 @@ bea_all <- bea2024_govt |>
              
 ```
 
+#Calculations on total industry and govt as a percentage of the total
 
 ```{r}
 bea_all <- bea_all |> 
@@ -116,9 +177,9 @@ bea_all <- bea_all |>
 
 ```
 
-
+#Slimmed down summary table
 ```{r}
-bea_all2 <- bea_all |> 
+bea_all1 <- bea_all |> 
   mutate(table_total24 = government_24 + private_24,
          table_total14 =  government_14 + private_14,
          diff_24 = table_total24 - table_total14,
@@ -127,7 +188,7 @@ bea_all2 <- bea_all |>
   select(geo_name, total_24, table_total24, diff_24,  pct_gov_24, total_14, table_total14, pct_gov_14)
 
 
-write_csv(bea_all2, "./data/bea_all_summary.csv")
+write_csv(bea_all1, "./data/bea_all_summary.csv")
 ```
 
 
@@ -138,22 +199,31 @@ write_csv(bea_all2, "./data/bea_all_summary.csv")
 
 Plot the pct
 #needs updating - rsw
+
+
+
+#Compare all industries, PG, Montgomery and Maryland
+
 ```{r}
-ggplot(bea2024_govt, aes(x = pct_gov, y = reorder(geo_name, pct_gov), fill = pct_gov)) +
-  geom_col(show.legend = FALSE) +
-  labs(
-    title = "Pct government in local Maryland counties",
-    subtitle = "2024 BEA data",
-    caption = "Graphic by Rob Wells, 10-26-2026",
-    y = "county",
-    x = "Pct govt of GDP"
-  )
+bea2024_pgmtmd <- bea2024 |> 
+  filter(line_code %in% c(1, 2, 83)) |> 
+  filter(geo_fips %in% c(24031, 24033, 24000)) |> 
+  subset(select = -c(line_code)) |> 
+  pivot_wider(names_from = description, values_from = x2024) |> 
+  clean_names() |> 
+  rename(government_24 = government_and_government_enterprises, total_24 = all_industry_total, private_24 = private_industries) |> 
+  mutate(across(c(total_24, private_24, government_24), as.numeric)) |> 
+  mutate(geo_name = str_remove_all(geo_name, ", MD")) |> 
+  mutate(pct_govt = round(government_24/total_24*100)) 
+
+
 
 ```
 
-Adding labels, thanks Gemimi
+#Chart
+
 ```{r}
-ggplot(bea2024_govt, aes(x = pct_gov, y = reorder(geo_name, pct_gov), fill = geo_name == "Maryland")) +
+ggplot(bea2024_pgmtmd, aes(x = pct_gov, y = reorder(geo_name, pct_gov), fill = geo_name == "Maryland")) +
   geom_col(show.legend = FALSE) +
   
   # Set colors: gold/yellow for Maryland (TRUE), grey for everything else (FALSE)
@@ -179,7 +249,21 @@ ggplot(bea2024_govt, aes(x = pct_gov, y = reorder(geo_name, pct_gov), fill = geo
     y = "county",
     x = "Pct govt of GDP"
   )
+
 ```
+
+
+
+
+# PG County budget
+https://www.princegeorgescountymd.gov/sites/default/files/media-document/Operating%20Budget%20-%20April%203%2C%202026.pdf
+
+
+What is the percentage of corporate tax revenue of the PG County Budget and how has it changed
+```{r}
+
+```
+
 
 
 
