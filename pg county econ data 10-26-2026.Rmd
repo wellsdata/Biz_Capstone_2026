@@ -1,7 +1,7 @@
 ---
-title: "MD and PG County GDP and Census Data"
+title: "PG Budget, MD and PG County GDP and Census Data"
 author: "Wells"
-date: "2026-11-2"
+date: "2026-11-8"
 output: html_document
 ---
 
@@ -22,10 +22,99 @@ library(tidyverse)
 #install.packages("formattable")
 library(formattable)
 library(janitor)
+library(scales)
+```
+
+#------------------------------
+# PG County budget
+#------------------------------
+
+https://www.princegeorgescountymd.gov/sites/default/files/media-document/Operating%20Budget%20-%20April%203%2C%202026.pdf
+
+
+What is the percentage of corporate tax revenue of the PG County Budget and how has it changed
+```{r}
+pg_budget <- read_csv("./data/revenue_summary_operating_budget.csv") |> 
+  clean_names()
+
+pg_biz <- pg_budget |> 
+  filter(business == "biz" | category == "TOTAL - ALL FUNDS") 
+
 ```
 
 
+### Rough estimate business income
+#Gemini assisted
+in r, i have a df called pg_biz that has 16 sources of business revenue in a category for fy_2025_actual  fy_2026_budget    fy_2026_estimate fy_2027_proposed. i want to sum that revenue and put it in a new row for each of the years. i also have a TOTAL - ALL FUNDS category in the same table for all revenue including personal taxes not in this table. the business sources are designated by "biz" in the business category. I want a final row that shows the percentage of business revenue to the total - all funds. glimpse(pg_biz) head(pg_biz)
+
+```{r}
+# Helper function to convert currency strings to numeric numbers
+parse_currency <- function(x) {
+  x <- str_trim(x)
+  # Handle accounting format: ($1,205,804) -> -1205804
+  is_neg <- str_detect(x, "^\\(.*\\)$")
+  
+  # Remove $, commas, parentheses, and spaces
+  clean_x <- str_remove_all(x, "[\\$,\\(\\)\\s]")
+  # Treat "-" or empty string as 0
+  clean_x[clean_x == "-" | clean_x == ""] <- "0"
+  
+  num <- parse_number(clean_x)
+  ifelse(is_neg, -num, num)
+}
+
+# 1. Convert year columns to numeric for calculation
+year_cols <- c("fy_2025_actual", "fy_2026_budget", "fy_2026_estimate", "fy_2027_proposed")
+
+pg_biz_num <- pg_biz %>%
+  mutate(across(all_of(year_cols), parse_currency))
+
+# 2. Extract Total - All Funds numeric row
+total_funds_row <- pg_biz_num %>%
+  filter(category == "TOTAL - ALL FUNDS")
+
+# 3. Create the "TOTAL - BUSINESS REVENUE" row
+biz_summary_row <- pg_biz_num %>%
+  filter(business == "biz") %>%
+  summarise(
+    category = "TOTAL - BUSINESS REVENUE",
+    subcategory_item = "Total Business Sources",
+    across(all_of(year_cols), sum, na.rm = TRUE),
+    change_fy26_fy27 = percent((fy_2027_proposed - fy_2026_budget) / fy_2026_budget, accuracy = 0.01),
+    business = "biz_total"
+  )
+
+# 4. Create the "PERCENTAGE OF TOTAL ALL FUNDS" row
+pct_row <- tibble(
+  category = "% OF TOTAL ALL FUNDS",
+  subcategory_item = "Business Revenue % Share",
+  fy_2025_actual = percent(biz_summary_row$fy_2025_actual / total_funds_row$fy_2025_actual, accuracy = 0.01),
+  fy_2026_budget = percent(biz_summary_row$fy_2026_budget / total_funds_row$fy_2026_budget, accuracy = 0.01),
+  fy_2026_estimate = percent(biz_summary_row$fy_2026_estimate / total_funds_row$fy_2026_estimate, accuracy = 0.01),
+  fy_2027_proposed = percent(biz_summary_row$fy_2027_proposed / total_funds_row$fy_2027_proposed, accuracy = 0.01),
+  change_fy26_fy27 = NA_character_,
+  business = "pct_share"
+)
+
+# 5. Format numeric business summary values back into currency strings
+biz_summary_row_formatted <- biz_summary_row %>%
+  mutate(across(all_of(year_cols), ~ dollar(.x, accuracy = 1)))
+
+# 6. Combine all rows into final table
+pg_biz_final <- bind_rows(
+  pg_biz,
+  biz_summary_row_formatted,
+  pct_row
+)
+  
+
+```
+
+
+#------------------------------
 #Bureau of Economic Research Local GDP data
+#------------------------------
+
 ```{r}
 bea2024 <- read_csv("./data/bea_md_gdp_county_2024_CAGDP9.csv", skip=3) |> 
   clean_names()
@@ -255,22 +344,16 @@ ggplot(bea2024_pgmtmd, aes(x = pct_gov, y = reorder(geo_name, pct_gov), fill = g
 
 
 
-# PG County budget
-https://www.princegeorgescountymd.gov/sites/default/files/media-document/Operating%20Budget%20-%20April%203%2C%202026.pdf
 
 
-What is the percentage of corporate tax revenue of the PG County Budget and how has it changed
-```{r}
 
-```
-
-
+#-------------------------
 
 
 
 # Smith School Economic Data
 ```{r}
-pg <- read_csv("https://raw.githubusercontent.com/wellsdata/Biz_Capstone_2026/refs/heads/main/output/pg_8_31_2026.csv?token=GHSAT0AAAAAAEFOQ3T6AJ2AJ4DD7AYHK4MQ2VAQAEA")
+pg <- read_csv("https://raw.githubusercontent.com/wellsdata/Biz_Capstone_2026/refs/heads/main/output/pg_8_31_2026.csv")
 ```
 
 
