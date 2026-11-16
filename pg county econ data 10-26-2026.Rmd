@@ -1,14 +1,12 @@
 ---
 title: "PG Budget, MD and PG County GDP and Census Data"
 author: "Wells"
-date: "2026-11-8"
+date: "2026-11-16"
 output: html_document
 ---
 
 
 This code updates earlier work analyzing GDP by county in Maryland.
-It is examining the Bureau of Economic Analysis Real GDP by County for 2024 and earlier years.
-https://apps.bea.gov/iTable/?reqid=70&step=30&isuri=1&year_end=-1&classification=naics&state=0&yearbegin=-1&unit_of_measure=percentchange&major_area=0&area=04000&year=-1&tableid=512&category=1512&area_type=0&statistic=1&selected_income_data=0#eyJhcHBpZCI6NzAsInN0ZXBzIjpbMSwyOSwyNSwzMSwyNiwyNywzMF0sImRhdGEiOltbInRhYmxlaWQiLCI1MDMiXSxbIk1ham9yX0FyZWEiLCI0Il0sWyJTdGF0ZSIsWyIyNDAwMCJdXSxbIkFyZWEiLFsiMjQwMDAiXV0sWyJTdGF0aXN0aWMiLFsiLTEiXV0sWyJVbml0X29mX21lYXN1cmUiLCJMZXZlbHMiXSxbIlllYXIiLFsiMjAyNCJdXSxbIlllYXJCZWdpbiIsIi0xIl0sWyJZZWFyX0VuZCIsIi0xIl1dfQ==
 
 
 It also contains an analysis of the Prince George's County budget for FY2027
@@ -18,8 +16,9 @@ https://www.princegeorgescountymd.gov/sites/default/files/media-document/Operati
 
 
 ```{r message=FALSE, warning=FALSE}
-#install.packages("googlesheets4")
-#install.packages("formattable")
+# install.packages("googlesheets4")
+# install.packages("formattable")
+# install.packages("janitor")
 library(tidyverse)
 library(formattable)
 library(janitor)
@@ -147,11 +146,51 @@ pg_biz_final <- bind_rows(
 #   
 
 ```
+ 
+### More calcs on final table
+```{r}
+options(scipen = 999) 
+
+pg_biz_final1 <- pg_biz_final |>
+  mutate(
+    across(
+      c(fy_2025_actual, fy_2026_budget, fy_2026_estimate, fy_2027_proposed),
+      parse_number
+    ),
+    new_change_fy26_fy27 = percent((fy_2027_proposed-fy_2026_budget)/fy_2026_budget, accuracy = 0.1)
+  )
+
+
+```
+
+### descriptive stats
+```{r}
+summary(pg_biz_final1$fy_2027_proposed)
+
+
+```
+
+### sort greater than 3rd quartile
+```{r}
+
+x <- pg_biz_final1 |> 
+  filter(fy_2027_proposed > 38731725) |> 
+  arrange(desc(change_fy26_fy27)) |> 
+  select(subcategory_item, fy_2027_proposed, change_fy26_fy27)
+
+
+
+```
+
 
 
 #------------------------------
 #Bureau of Economic Research Local GDP data
 #------------------------------
+
+It is examining the Bureau of Economic Analysis Real GDP by County for 2024 and earlier years.
+https://apps.bea.gov/iTable/?reqid=70&step=30&isuri=1&year_end=-1&classification=naics&state=0&yearbegin=-1&unit_of_measure=percentchange&major_area=0&area=04000&year=-1&tableid=512&category=1512&area_type=0&statistic=1&selected_income_data=0#eyJhcHBpZCI6NzAsInN0ZXBzIjpbMSwyOSwyNSwzMSwyNiwyNywzMF0sImRhdGEiOltbInRhYmxlaWQiLCI1MDMiXSxbIk1ham9yX0FyZWEiLCI0Il0sWyJTdGF0ZSIsWyIyNDAwMCJdXSxbIkFyZWEiLFsiMjQwMDAiXV0sWyJTdGF0aXN0aWMiLFsiLTEiXV0sWyJVbml0X29mX21lYXN1cmUiLCJMZXZlbHMiXSxbIlllYXIiLFsiMjAyNCJdXSxbIlllYXJCZWdpbiIsIi0xIl0sWyJZZWFyX0VuZCIsIi0xIl1dfQ==
+
 
 ```{r}
 bea2024 <- read_csv("./data/bea_md_gdp_county_2024_CAGDP9.csv", skip=3) |> 
