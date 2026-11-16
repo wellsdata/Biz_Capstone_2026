@@ -18,11 +18,13 @@ https://www.princegeorgescountymd.gov/sites/default/files/media-document/Operati
 
 
 ```{r message=FALSE, warning=FALSE}
-library(tidyverse)
+#install.packages("googlesheets4")
 #install.packages("formattable")
+library(tidyverse)
 library(formattable)
 library(janitor)
 library(scales)
+library(googlesheets4)
 ```
 
 #------------------------------
@@ -32,16 +34,36 @@ library(scales)
 https://www.princegeorgescountymd.gov/sites/default/files/media-document/Operating%20Budget%20-%20April%203%2C%202026.pdf
 
 
+#TASK 1 - VERIFY THAT the AI scan correctly captured "category" for pg-budget. See revenue summary pg 70
+https://docs.google.com/spreadsheets/d/1p6p-xfFchjEoht196EESTeCS1ujoE0xADVjN06zGnPo/edit?gid=576188390#gid=576188390
+
+#TASK 2 - DOUBLE CHECK how I classified business revenue (business - "biz") in the spreadsheet. See revenue summary pg 70
+https://docs.google.com/spreadsheets/d/1p6p-xfFchjEoht196EESTeCS1ujoE0xADVjN06zGnPo/edit?gid=576188390#gid=576188390
+
 What is the percentage of corporate tax revenue of the PG County Budget and how has it changed
 ```{r}
-pg_budget <- read_csv("./data/revenue_summary_operating_budget.csv") |> 
-  clean_names()
+#old - keep for wells
+# pg_budget <- read_csv("./data/revenue_summary_operating_budget.csv") |>
+#   clean_names()
+
+gs4_deauth()
+pg_budget <- read_sheet("https://docs.google.com/spreadsheets/d/1p6p-xfFchjEoht196EESTeCS1ujoE0xADVjN06zGnPo/edit?usp=sharing") |>
+  clean_names() |>
+  mutate(across(
+    where(is.list),
+    ~ map_dbl(.x, \(val) if (is.null(val)) NA_real_ else suppressWarnings(as.numeric(val)))
+  )) |>
+  as.data.frame()
 
 pg_biz <- pg_budget |> 
   filter(business == "biz" | category == "TOTAL - ALL FUNDS") 
 
 ```
 
+
+
+#TASK 3 - VERIFY THAT the AI scan correctly captured revenues for each of these years.  See revenue summary pg 70
+https://docs.google.com/spreadsheets/d/1p6p-xfFchjEoht196EESTeCS1ujoE0xADVjN06zGnPo/edit?gid=576188390#gid=576188390
 
 ### Rough estimate business income
 #Gemini assisted
@@ -81,7 +103,8 @@ biz_summary_row <- pg_biz_num %>%
     subcategory_item = "Total Business Sources",
     across(all_of(year_cols), sum, na.rm = TRUE),
     change_fy26_fy27 = percent((fy_2027_proposed - fy_2026_budget) / fy_2026_budget, accuracy = 0.01),
-    business = "biz_total"
+    # change_fy26_fy27 = ((fy_2027_proposed - fy_2026_budget) / fy_2026_budget),
+    # business = "biz_total"
   )
 
 # 4. Create the "PERCENTAGE OF TOTAL ALL FUNDS" row
@@ -94,19 +117,34 @@ pct_row <- tibble(
   fy_2027_proposed = percent(biz_summary_row$fy_2027_proposed / total_funds_row$fy_2027_proposed, accuracy = 0.01),
   change_fy26_fy27 = NA_character_,
   business = "pct_share"
-)
+) |> 
+  as.data.frame()
 
 # 5. Format numeric business summary values back into currency strings
 biz_summary_row_formatted <- biz_summary_row %>%
   mutate(across(all_of(year_cols), ~ dollar(.x, accuracy = 1)))
 
-# 6. Combine all rows into final table
+
+pg_biz_formatted <- pg_biz |>
+  mutate(
+    across(c(fy_2025_actual, fy_2026_budget, fy_2026_estimate, fy_2027_proposed), dollar),
+    change_fy26_fy27 = percent(change_fy26_fy27, accuracy = 0.1)
+  )
+
 pg_biz_final <- bind_rows(
-  pg_biz,
+  pg_biz_formatted,
   biz_summary_row_formatted,
   pct_row
 )
-  
+# 
+# 
+# # 6. Combine all rows into final table
+# pg_biz_final <- bind_rows(
+#   pg_biz,
+#   biz_summary_row_formatted, 
+#   pct_row
+# )
+#   
 
 ```
 
